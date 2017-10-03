@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3140170EAB02B91C543C63A7 /* Pods_SecurityAsset.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */; };
 		C85D7E361F83A01B001AA88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */; };
+		C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */; };
 		C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853C1F8284E400A2460C /* AppDelegate.swift */; };
 		C860853F1F8284E400A2460C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853E1F8284E400A2460C /* LogInViewController.swift */; };
 		C86085421F8284E400A2460C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86085401F8284E400A2460C /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		33E231E9300909496B472B30 /* Pods-SecurityAsset.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.release.xcconfig"; sourceTree = "<group>"; };
 		741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecurityAsset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		C86085391F8284E300A2460C /* SecurityAsset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityAsset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C860853C1F8284E400A2460C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C860853E1F8284E400A2460C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C860853C1F8284E400A2460C /* AppDelegate.swift */,
+				C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */,
 				C860853E1F8284E400A2460C /* LogInViewController.swift */,
 				C86085401F8284E400A2460C /* Main.storyboard */,
 				C86085431F8284E400A2460C /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			files = (
 				C860853F1F8284E400A2460C /* LogInViewController.swift in Sources */,
 				C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */,
+				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

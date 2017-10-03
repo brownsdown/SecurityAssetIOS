@@ -1,6 +1,7 @@
 version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
 options: "3196fd8d7dff02401c7fe5b8e80895ae"
-build_time: [1507034950, 278482000]
+build_time: [1507042092, 456134000]
 inputs:
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/LogInViewController.swift": [1507034862, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/LogInViewController.swift": [1507042028, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/AppDelegate.swift": [1507026940, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1507042050, 0]

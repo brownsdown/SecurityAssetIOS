@@ -173,6 +173,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import UIKit;
+@import ObjectiveC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -199,17 +200,41 @@ SWIFT_CLASS("_TtC13SecurityAsset11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class FIRDatabaseReference;
+@class FIRUser;
+
+SWIFT_CLASS("_TtC13SecurityAsset15FireBaseManager")
+@interface FireBaseManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) FIRDatabaseReference * _Nonnull databaseRef;)
++ (FIRDatabaseReference * _Nonnull)databaseRef SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull currentUserID;)
++ (NSString * _Nonnull)currentUserID SWIFT_WARN_UNUSED_RESULT;
++ (void)setCurrentUserID:(NSString * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) FIRUser * _Nullable currentUser;)
++ (FIRUser * _Nullable)currentUser SWIFT_WARN_UNUSED_RESULT;
++ (void)setCurrentUser:(FIRUser * _Nullable)value;
++ (void)LoginWithEmail:(NSString * _Nonnull)email password:(NSString * _Nonnull)password completion:(void (^ _Nonnull)(BOOL))completion;
++ (void)CreateUserWithEmail:(NSString * _Nonnull)email password:(NSString * _Nonnull)password completion:(void (^ _Nonnull)(BOOL))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITextField;
 @class UIButton;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC13SecurityAsset19LogInViewController")
 @interface LogInViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified emailTextField;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified logInButton;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified createAccountButton;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified forgotPasswordButton;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified mailTextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified passwordTextField;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
+- (IBAction)logInButtonClick:(UIButton * _Nonnull)sender;
+- (IBAction)createUserButtonClick:(UIButton * _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
