@@ -8,10 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class LogInViewController: UIViewController {
+
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        logInButton.layer.cornerRadius = 15
+        createAccountButton.layer.cornerRadius = 15
+        forgotPasswordButton.layer.cornerRadius = 15
         // Do any additional setup after loading the view, typically from a nib.
     }
 

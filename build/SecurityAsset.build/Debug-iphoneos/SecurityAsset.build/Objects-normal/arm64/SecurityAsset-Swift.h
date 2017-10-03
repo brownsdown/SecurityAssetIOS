@@ -199,11 +199,15 @@ SWIFT_CLASS("_TtC13SecurityAsset11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIButton;
 @class NSBundle;
 @class NSCoder;
 
-SWIFT_CLASS("_TtC13SecurityAsset14ViewController")
-@interface ViewController : UIViewController
+SWIFT_CLASS("_TtC13SecurityAsset19LogInViewController")
+@interface LogInViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified logInButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified createAccountButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified forgotPasswordButton;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
