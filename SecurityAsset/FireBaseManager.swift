@@ -18,7 +18,7 @@ class FireBaseManager: NSObject
 //    static var currentUserID: String = ""
     var currentUser: User? = nil
     
-    //MARK: - "Signleton"
+    //MARK:- "Signleton"
     static let shared = FireBaseManager()
     
    func Login(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))

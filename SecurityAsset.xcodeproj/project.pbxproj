@@ -20,6 +20,7 @@
 		C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */; };
 		C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D01F8528CC00F9DF92 /* StateUser.swift */; };
 		C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D11F8528CC00F9DF92 /* Adresse.swift */; };
+		C8B400D91F852EC900F9DF92 /* UserCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D81F852EC900F9DF92 /* UserCreationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePosition.swift; sourceTree = "<group>"; };
 		C8B400D01F8528CC00F9DF92 /* StateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUser.swift; sourceTree = "<group>"; };
 		C8B400D11F8528CC00F9DF92 /* Adresse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adresse.swift; sourceTree = "<group>"; };
+		C8B400D81F852EC900F9DF92 /* UserCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationViewController.swift; sourceTree = "<group>"; };
 		E0EFEB562CD03FD513E8BDCB /* Pods-SecurityAsset.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,7 +96,7 @@
 			children = (
 				C860853C1F8284E400A2460C /* AppDelegate.swift */,
 				C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */,
-				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+				C8B400DA1F852ED200F9DF92 /* ViewControllers */,
 				C8B400D71F8528D300F9DF92 /* Models */,
 				C86085401F8284E400A2460C /* Main.storyboard */,
 				C86085431F8284E400A2460C /* Assets.xcassets */,
@@ -115,6 +117,15 @@
 				C8B400D01F8528CC00F9DF92 /* StateUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C8B400DA1F852ED200F9DF92 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C8B400D81F852EC900F9DF92 /* UserCreationViewController.swift */,
+				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */,
 				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
 				C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */,
+				C8B400D91F852EC900F9DF92 /* UserCreationViewController.swift in Sources */,
 				C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */,
 				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,

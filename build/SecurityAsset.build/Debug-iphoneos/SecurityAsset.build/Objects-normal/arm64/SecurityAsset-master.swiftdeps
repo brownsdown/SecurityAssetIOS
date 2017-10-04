@@ -1,12 +1,13 @@
 version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
 options: "3e66aa30047af78b02de64fa40de7d32"
-build_time: [1507127856, 470604000]
+build_time: [1507129182, 393770000]
 inputs:
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/StateUser.swift": [1507103035, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/AppUser.swift": [1507124751, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/AppDelegate.swift": [1507026940, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/UserCreationViewController.swift": [1507129160, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/Location.swift": [1507099982, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1507124242, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/LogInViewController.swift": [1507127855, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1507128885, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/LogInViewController.swift": [1507127897, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/PhonePosition.swift": [1507102740, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/Adresse.swift": [1507099806, 0]
