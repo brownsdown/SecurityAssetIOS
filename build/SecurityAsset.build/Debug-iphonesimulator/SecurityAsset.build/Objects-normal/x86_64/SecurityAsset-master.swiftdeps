@@ -1,0 +1,7 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
+options: "9ac2d9a6856a54451496a956dec36259"
+build_time: [1507117643, 236330000]
+inputs:
+  "/Users/michaelmoldawski/Desktop/SecurityAsset/SecurityAsset/LogInViewController.swift": [1507107539, 0]
+  "/Users/michaelmoldawski/Desktop/SecurityAsset/SecurityAsset/AppDelegate.swift": [1507026940, 0]
+  "/Users/michaelmoldawski/Desktop/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1507107539, 0]
