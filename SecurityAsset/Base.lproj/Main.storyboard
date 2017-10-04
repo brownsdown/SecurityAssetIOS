@@ -83,9 +83,9 @@
                     <navigationItem key="navigationItem" title="Login" id="p7k-Rd-V7r"/>
                     <connections>
                         <outlet property="createAccountButton" destination="Ilo-b6-CDa" id="By7-Bs-eRr"/>
-                        <outlet property="emailTextField" destination="taR-Xk-PMK" id="0iJ-f5-Pti"/>
                         <outlet property="forgotPasswordButton" destination="b5J-kh-sGo" id="581-ns-Jrb"/>
                         <outlet property="logInButton" destination="Q6w-4S-HCd" id="y3c-3m-6Si"/>
+                        <outlet property="mailTextField" destination="taR-Xk-PMK" id="HUh-XU-y8f"/>
                         <outlet property="passwordTextField" destination="Pbo-FE-7mm" id="lHO-sQ-3w0"/>
                     </connections>
                 </viewController>

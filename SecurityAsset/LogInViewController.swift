@@ -12,7 +12,7 @@ import UIKit
 class LogInViewController: UIViewController {
    
     //MARK:- IBOutlet Properties
-    @IBOutlet weak var emailTextField: UITextField!
+
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
