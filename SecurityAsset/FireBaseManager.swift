@@ -15,10 +15,13 @@ import FirebaseAuth
 class FireBaseManager: NSObject
 {
     static let databaseRef = Database.database().reference()
-    static var currentUserID: String = ""
-    static var currentUser: User? = nil
+//    static var currentUserID: String = ""
+    var currentUser: User? = nil
     
-    static func Login(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
+    //MARK: - "Signleton"
+    static let shared = FireBaseManager()
+    
+   func Login(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error
@@ -28,14 +31,14 @@ class FireBaseManager: NSObject
             }
             else
             {
-                currentUser = user
-                currentUserID = (user?.uid)!
+                self.currentUser = user
+//                currentUserID = (user?.uid)!
                 completion(true)
             }
         }
     }
     
-    static func CreateUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
+   func CreateUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error
@@ -45,8 +48,8 @@ class FireBaseManager: NSObject
             }
             else
             {
-                currentUser = user
-                currentUserID = (user?.uid)!
+                self.currentUser = user
+//                currentUserID = (user?.uid)!
                 completion(true)
             }
         }

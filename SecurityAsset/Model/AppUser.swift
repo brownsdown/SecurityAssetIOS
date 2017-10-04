@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 
-class ClientUser
+class AppUser
 {
     var userState: StateUser
     var firstName: String
@@ -19,9 +19,9 @@ class ClientUser
     var location: Location
     var phonePosition: PhonePosition
     
-    init(fireBaseUser: User)
+    init(userState: StateUser, firstName: String, lastName: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
     {
-        self.userState = fireBaseUser.
+        self.userState = userState
         self.firstName = firstName
         self.lastName = lastName
         self.adress = adress

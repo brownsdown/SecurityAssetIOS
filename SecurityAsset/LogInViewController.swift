@@ -35,7 +35,7 @@ class LogInViewController: UIViewController {
     @IBAction func logInButtonClick(_ sender: UIButton) {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.Login(email: email, password: password) { (success: Bool) in
+        FireBaseManager.shared.Login(email: email, password: password) { (success: Bool) in
             if (success)
             {
                 print("login successed")
@@ -50,7 +50,7 @@ class LogInViewController: UIViewController {
     @IBAction func createUserButtonClick(_ sender: UIButton) {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.CreateUser(email: email, password: password) { (success) in
+        FireBaseManager.shared.CreateUser(email: email, password: password) { (success) in
             if (success)
             {
                 print("user created")
