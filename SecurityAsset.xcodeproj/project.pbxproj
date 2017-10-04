@@ -11,25 +11,34 @@
 		C85D7E361F83A01B001AA88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */; };
 		C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */; };
 		C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853C1F8284E400A2460C /* AppDelegate.swift */; };
-		C860853F1F8284E400A2460C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853E1F8284E400A2460C /* LogInViewController.swift */; };
 		C86085421F8284E400A2460C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86085401F8284E400A2460C /* Main.storyboard */; };
 		C86085441F8284E400A2460C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86085431F8284E400A2460C /* Assets.xcassets */; };
 		C86085471F8284E400A2460C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86085451F8284E400A2460C /* LaunchScreen.storyboard */; };
+		C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */; };
+		C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CD1F8528CB00F9DF92 /* AppUser.swift */; };
+		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
+		C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */; };
+		C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D01F8528CC00F9DF92 /* StateUser.swift */; };
+		C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D11F8528CC00F9DF92 /* Adresse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33E231E9300909496B472B30 /* Pods-SecurityAsset.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.release.xcconfig"; sourceTree = "<group>"; };
 		741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecurityAsset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C83B88221F851CEF00F2D35E /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		C86085391F8284E300A2460C /* SecurityAsset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityAsset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C860853C1F8284E400A2460C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C860853E1F8284E400A2460C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C86085411F8284E400A2460C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C86085431F8284E400A2460C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C86085461F8284E400A2460C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C86085481F8284E400A2460C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		C8B400CD1F8528CB00F9DF92 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		C8B400CE1F8528CB00F9DF92 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePosition.swift; sourceTree = "<group>"; };
+		C8B400D01F8528CC00F9DF92 /* StateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUser.swift; sourceTree = "<group>"; };
+		C8B400D11F8528CC00F9DF92 /* Adresse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adresse.swift; sourceTree = "<group>"; };
 		E0EFEB562CD03FD513E8BDCB /* Pods-SecurityAsset.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,8 +94,8 @@
 			children = (
 				C860853C1F8284E400A2460C /* AppDelegate.swift */,
 				C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */,
-				C860853E1F8284E400A2460C /* LogInViewController.swift */,
-				C83B88221F851CEF00F2D35E /* Model */,
+				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+				C8B400D71F8528D300F9DF92 /* Models */,
 				C86085401F8284E400A2460C /* Main.storyboard */,
 				C86085431F8284E400A2460C /* Assets.xcassets */,
 				C86085451F8284E400A2460C /* LaunchScreen.storyboard */,
@@ -94,6 +103,18 @@
 				C86085481F8284E400A2460C /* Info.plist */,
 			);
 			path = SecurityAsset;
+			sourceTree = "<group>";
+		};
+		C8B400D71F8528D300F9DF92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C8B400D11F8528CC00F9DF92 /* Adresse.swift */,
+				C8B400CD1F8528CB00F9DF92 /* AppUser.swift */,
+				C8B400CE1F8528CB00F9DF92 /* Location.swift */,
+				C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */,
+				C8B400D01F8528CC00F9DF92 /* StateUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C860853F1F8284E400A2460C /* LogInViewController.swift in Sources */,
+				C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */,
+				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
 				C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */,
+				C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */,
 				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
+				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
+				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,
+				C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

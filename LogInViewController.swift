@@ -35,35 +35,31 @@ class LogInViewController: UIViewController {
     @IBAction func logInButtonClick(_ sender: UIButton) {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        
-        //FIXME: new login
-        FireBaseManager.shared.login(email: <#T##String#>, password: <#T##String#>, completion: <#T##((Bool) -> Void)##((Bool) -> Void)##(Bool) -> Void#>)
-//        FireBaseManager.Login(email: email, password: password) { (success: Bool) in
-//            if (success)
-//            {
-//                print("login successed")
-//            }
-//            else
-//            {
-//                print("not succes")
-//            }
-//        }
+        FireBaseManager.shared.Login(email: email, password: password) { (success: Bool) in
+            if (success)
+            {
+                print("login successed")
+            }
+            else
+            {
+                print("not succes")
+            }
+        }
     }
   
     @IBAction func createUserButtonClick(_ sender: UIButton) {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        //FIXME: new create user
-//        FireBaseManager.CreateUser(email: email, password: password) { (success) in
-//            if (success)
-//            {
-//                print("user created")
-//            }
-//            else
-//            {
-//                print("user not created")
-//            }
-//        }
+        FireBaseManager.shared.CreateUser(email: email, password: password) { (success) in
+            if (success)
+            {
+                print("user created")
+            }
+            else
+            {
+                print("user not created")
+            }
+        }
     }
     
 

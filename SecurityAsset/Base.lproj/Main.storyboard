@@ -86,7 +86,6 @@
                         <outlet property="emailTextField" destination="taR-Xk-PMK" id="0iJ-f5-Pti"/>
                         <outlet property="forgotPasswordButton" destination="b5J-kh-sGo" id="581-ns-Jrb"/>
                         <outlet property="logInButton" destination="Q6w-4S-HCd" id="y3c-3m-6Si"/>
-                        <outlet property="mailTextField" destination="taR-Xk-PMK" id="EyB-hj-c1M"/>
                         <outlet property="passwordTextField" destination="Pbo-FE-7mm" id="lHO-sQ-3w0"/>
                     </connections>
                 </viewController>
