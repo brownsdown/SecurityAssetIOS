@@ -11,17 +11,28 @@ import FirebaseAuth
 
 class AppUser
 {
-    var userState: StateUser
-    var firstName: String
-    var lastName: String
-    var adress: Adress
-    let bithDate: String
-    var location: Location
-    var phonePosition: PhonePosition
+    var userState: StateUser = StateUser.safe
+    var group: Group = Group(group: [String]())
+    var firstName: String = ""
+    var lastName: String = ""
+    var adress: Adress = Adress()
+    var bithDate: String = ""
+    var location: Location = Location()
+    var phonePosition: PhonePosition = PhonePosition()
+    var userFireBase: User? = nil
     
-    init(userState: StateUser, firstName: String, lastName: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
+    init()
+    {}
+    
+    init(fireBaseUser: User)
+    {
+        self.userFireBase = fireBaseUser
+    }
+    
+    init(userState: StateUser, group: Group,firstName: String, lastName: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
     {
         self.userState = userState
+        self.group = group
         self.firstName = firstName
         self.lastName = lastName
         self.adress = adress

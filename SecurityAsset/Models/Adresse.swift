@@ -9,9 +9,20 @@
 import Foundation
 struct Adress
 {
-    var number: Int
-    var street: String
-    var city: String
-    var cp: Int       
-    var mailBox: Int
+    var number: Int = 0
+    var street: String = ""
+    var city: String = ""
+    var cp: Int = 0
+    var mailBox: Int = 0
+    
+    init()
+    {}
+    init(number: Int, street: String, city: String, cp: Int, mailBox: Int)
+    {
+        self.number = number
+        self.street = street
+        self.city = city
+        self.cp = cp
+        self.mailBox = mailBox
+    }
 }

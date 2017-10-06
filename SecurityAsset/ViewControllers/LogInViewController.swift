@@ -6,11 +6,17 @@
 //  Copyright © 2017 michael moldawski. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import FirebaseAuth
 
 
 class LogInViewController: UIViewController {
    
+    //MARK:- Attribut
+    var user: AppUser?
+    
+    
     //MARK:- IBOutlet Properties
 
     @IBOutlet weak var logInButton: UIButton!
@@ -32,12 +38,43 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func logInButtonClick(_ sender: UIButton) {
+    @IBAction func buttonClick(_ sender: UIButton) {
+        guard let title = sender.titleLabel?.text else{return}
+        switch title {
+        case "Login":
+            logIn()
+        case "Create Account":
+            createUser()
+        case "Continue":
+           moveForward()
+        default:
+            print("default")
+        }
+       
+    }
+  
+    @IBAction func createUserButtonClick(_ sender: UIButton) {
+        
+    }
+    
+    func logIn()
+    {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.shared.Login(email: email, password: password) { (success: Bool) in
+        FireBaseManager.shared.login(email: email, password: password) { (success: Bool) in
             if (success)
             {
+                self.mailTextField.isUserInteractionEnabled = false
+                self.mailTextField.backgroundColor = UIColor.darkGray
+                
+                self.passwordTextField.isUserInteractionEnabled = false
+                self.passwordTextField.backgroundColor = UIColor.darkGray
+                
+                self.logInButton.setTitle("Continue", for: UIControlState.normal)
+                self.createAccountButton.setTitle("LogOut", for: UIControlState.normal)
+                
+                self.forgotPasswordButton.isEnabled = false
+                self.forgotPasswordButton.isHidden = true
                 print("login successed")
             }
             else
@@ -45,12 +82,14 @@ class LogInViewController: UIViewController {
                 print("not succes")
             }
         }
+        
     }
-  
-    @IBAction func createUserButtonClick(_ sender: UIButton) {
+    
+    func createUser()
+    {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.shared.CreateUser(email: email, password: password) { (success) in
+        FireBaseManager.shared.createUser(email: email, password: password) { (success) in
             if (success)
             {
                 print("user created")
@@ -60,6 +99,11 @@ class LogInViewController: UIViewController {
                 print("user not created")
             }
         }
+    }
+    
+    func moveForward()
+    {
+         self.performSegue(withIdentifier: "tabBarRootSegue", sender: nil)
     }
     
 

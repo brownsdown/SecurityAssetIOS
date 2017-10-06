@@ -21,14 +21,14 @@ class FireBaseManager: NSObject
     //MARK:- "Signleton"
     static let shared = FireBaseManager()
     
-   func Login(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
+   func login(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error
             {
                 print(error.localizedDescription)
-                
             }
+            
             else
             {
                 self.currentUser = user
@@ -38,7 +38,7 @@ class FireBaseManager: NSObject
         }
     }
     
-   func CreateUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
+   func createUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error

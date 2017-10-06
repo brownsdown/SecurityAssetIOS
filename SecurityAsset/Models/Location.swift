@@ -8,6 +8,13 @@
 import Foundation
 struct Location
 {
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double = 0
+    var longitude: Double = 0
+    init()
+    {}
+    init (latitude: Double, longitude: Double)
+    {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
