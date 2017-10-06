@@ -44,11 +44,14 @@ class FireBaseManager: NSObject
             if let error = error
             {
                 print(error.localizedDescription)
+                LogInViewController.fireBaseAuthError = error
+                completion(false)
                 
             }
             else
             {
                 self.currentUser = user
+                self.currentUser?.sendEmailVerification(completion: nil)
 //                currentUserID = (user?.uid)!
                 completion(true)
             }

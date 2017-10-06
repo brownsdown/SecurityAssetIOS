@@ -51,7 +51,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6w-4S-HCd">
                                 <rect key="frame" x="112.66666666666669" y="286" width="150" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="krk-fs-gb3"/>
                                 </connections>
@@ -59,7 +59,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilo-b6-CDa">
                                 <rect key="frame" x="112.66666666666669" y="336" width="150" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Create Account"/>
+                                <state key="normal" title="Create account"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jx1-GX-Sb1"/>
                                 </connections>
@@ -70,7 +70,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Voq-t3-ReA"/>
                                 </constraints>
-                                <state key="normal" title="Forgot Passwor?"/>
+                                <state key="normal" title="Forgot password?"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
