@@ -107,10 +107,10 @@ class LogInViewController: UIViewController {
                 let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                     (_) in
                     
-                    self.dismiss(animated: true, completion: {
+                    
 
                         self.alertVC?.dismiss(animated: true, completion: nil)
-                    })
+                    
                 }
                 self.showAlerteVCOkButton(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify it before clicking on \((self.logInButton.titleLabel?.text)!)", alertAction1: alertActionOk, alertAction2: nil)
                 print("user created")
@@ -123,9 +123,8 @@ class LogInViewController: UIViewController {
                 let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                     (_) in
                     
-                    self.dismiss(animated: true, completion: {
                         self.alertVC?.dismiss(animated: true, completion: nil)
-                    })
+                   
                 }
                  self.showAlerteVCOkButton(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
                 
@@ -136,9 +135,9 @@ class LogInViewController: UIViewController {
     
     func signOut()
     {
-        print(Auth.auth().currentUser!)
+       
         try! Auth.auth().signOut()
-        print(Auth.auth().currentUser)
+        
         self.user = AppUser(fireBaseUser: FireBaseManager.shared.currentUser!)
         self.mailTextField.isUserInteractionEnabled = true
         self.mailTextField.backgroundColor = UIColor.white
@@ -168,16 +167,16 @@ class LogInViewController: UIViewController {
             let alertActionYes = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default){
                 (_) in
                 self.user?.userFireBase?.sendEmailVerification(completion: nil)
-                self.dismiss(animated: true, completion: {
+             
                     self.alertVC?.dismiss(animated: true, completion: nil)
-                })
+                
                 let alertExplanationVC = UIAlertController(title: "To Do", message: "Please leave the application and come back after validated your email adress by following instruction sent to you by email.", preferredStyle: UIAlertControllerStyle.alert)
                 let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                     (_) in
                     
-                    self.dismiss(animated: true, completion: {
+                    
                         self.alertVC?.dismiss(animated: true, completion: nil)
-                    })
+                   
                 }
                 alertExplanationVC.addAction(alertActionOk)
                 self.present(alertExplanationVC, animated: true, completion: nil)
@@ -185,9 +184,9 @@ class LogInViewController: UIViewController {
             
             let alertActionNo = UIAlertAction(title: "No", style: UIAlertActionStyle.default) {
                 (_) in
-                self.dismiss(animated: true, completion: {
+                
                     self.alertVC?.dismiss(animated: true, completion: nil)
-                })
+                
             }
             self.showAlerteVCOkButton(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \((self.user?.userFireBase?.email)!)?", alertAction1: alertActionYes, alertAction2: alertActionNo)
         }

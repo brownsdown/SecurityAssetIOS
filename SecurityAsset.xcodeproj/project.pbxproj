@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3140170EAB02B91C543C63A7 /* Pods_SecurityAsset.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */; };
 		C8306A4F1F867C2B0060129E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A4E1F867C2B0060129E /* Group.swift */; };
+		C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */; };
 		C85D7E361F83A01B001AA88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */; };
 		C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */; };
 		C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853C1F8284E400A2460C /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		33E231E9300909496B472B30 /* Pods-SecurityAsset.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.release.xcconfig"; sourceTree = "<group>"; };
 		741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecurityAsset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8306A4E1F867C2B0060129E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		C86085391F8284E300A2460C /* SecurityAsset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityAsset.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			children = (
 				C8B400D81F852EC900F9DF92 /* UserCreationViewController.swift */,
 				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+				C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */,
 				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
+				C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */,
 				C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */,
 				C8306A4F1F867C2B0060129E /* Group.swift in Sources */,
 				C8B400D91F852EC900F9DF92 /* UserCreationViewController.swift in Sources */,
