@@ -14,7 +14,7 @@ import FirebaseAuth
 class ForgotPasswordViewController: UIViewController {
     
     
-   
+    
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -26,24 +26,21 @@ class ForgotPasswordViewController: UIViewController {
                     let alertVC = UIAlertController(title: "Error", message: errorToDisplay.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                     let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                         (_) in
-                        
-                        
-                            alertVC.dismiss(animated: true, completion: nil)
-                        
+                        alertVC.dismiss(animated: true, completion: nil)
                     }
+                    
                     alertVC.addAction(alertActionOk)
                     self.present(alertVC, animated: true, completion: nil)
                 }
+                    
                 else
                 {
                     let alertVC = UIAlertController(title: "Email sent", message: "An email has been sent to you to modify you're password", preferredStyle: UIAlertControllerStyle.alert)
                     let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                         (_) in
-                        
-                        
-                            alertVC.dismiss(animated: true, completion: nil)
-                      
+                        alertVC.dismiss(animated: true, completion: nil)
                     }
+                    
                     alertVC.addAction(alertActionOk)
                     self.present(alertVC, animated: true, completion: nil)
                 }

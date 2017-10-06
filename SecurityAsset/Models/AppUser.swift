@@ -24,9 +24,15 @@ class AppUser
     init()
     {}
     
-    init(fireBaseUser: User)
+    init?(fireBaseUser: User?)
     {
-        self.userFireBase = fireBaseUser
+        if let fireBaseUserTest = fireBaseUser
+        {
+            self.userFireBase = fireBaseUserTest
+        }
+        else{
+            return nil
+        }
     }
     
     init(userState: StateUser, group: Group,firstName: String, lastName: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
