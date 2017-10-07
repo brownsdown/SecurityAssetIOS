@@ -51,7 +51,7 @@ class LogInViewController: UIViewController {
         guard let title = sender.titleLabel?.text else{return}
         switch title {
         case "Sign in":
-            SignIn()
+            signIn()
         case "Create account":
             createUser()
         case "Continue":
@@ -66,7 +66,7 @@ class LogInViewController: UIViewController {
     
     
     
-    func SignIn()
+    func signIn()
     {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
@@ -105,16 +105,19 @@ class LogInViewController: UIViewController {
     {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.shared.createUser(email: email, password: password) { (success) in
+        FireBaseManager.shared.createUser(email: email, password: password)
+        { (success) in
             
             if (success)
             {
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
+                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+                {
                     (_) in
                     self.alertVC?.dismiss(animated: true, completion: nil)
                 }
-                self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify it before clicking on \((self.logInButton.titleLabel?.text)!)", alertAction1: alertActionOk, alertAction2: nil)
-                print("user created")
+                
+                self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before clicking on \((self.logInButton.titleLabel?.text)!)", alertAction1: alertActionOk, alertAction2: nil)
+                print("User created")
                 
             }
                 
@@ -178,7 +181,7 @@ class LogInViewController: UIViewController {
                 
                 self.alertVC?.dismiss(animated: true, completion: nil)
                 
-                let alertExplanationVC = UIAlertController(title: "To Do", message: "Please leave the application and come back after validated your email adress by following instruction sent to you by email.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertExplanationVC = UIAlertController(title: "To Do", message: "Please sign out and come back after validated your email adress by following instruction sent to you by email.", preferredStyle: UIAlertControllerStyle.alert)
                 let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
                 { (_) in
                     self.alertVC?.dismiss(animated: true, completion: nil)

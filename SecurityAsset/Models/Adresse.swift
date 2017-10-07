@@ -12,17 +12,19 @@ struct Adress
     var number: Int = 0
     var street: String = ""
     var city: String = ""
-    var cp: Int = 0
+    var stateZip: Int = 0
     var mailBox: Int = 0
+    var country: String = ""
     
     init()
     {}
-    init(number: Int, street: String, city: String, cp: Int, mailBox: Int)
+    init(number: Int, street: String, city: String, cp: Int, mailBox: Int, country: String)
     {
         self.number = number
         self.street = street
         self.city = city
-        self.cp = cp
+        self.stateZip = cp
         self.mailBox = mailBox
+        self.country = country
     }
 }
