@@ -135,8 +135,6 @@ class LogInViewController: UIViewController {
                 print("user not created")
             }
         }
-        
-        
     }
     
     func signOut()

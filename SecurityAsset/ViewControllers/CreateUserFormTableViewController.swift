@@ -9,25 +9,47 @@
 import UIKit
 
 class CreateUserFormTableViewController: UITableViewController {
+   
     let numberOfRowsAtSection: [Int] = [7, 6, 1]
+    var alertVC: UIAlertController?
     
     @IBOutlet var labels: [UILabel]!
     
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var validateButton: UIButton!
-    @IBOutlet weak var dateButton: UIButton!
-    
+    //MARK:- Outlets General information textFields
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var mailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordConfirmationTextField: UITextField!
+    @IBOutlet weak var groupToJoinOrCreateTextField: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
     var dateSelected: String = ""
     {
         didSet
         {
-           dateLabel.text = dateSelected
+            dateLabel.text = dateSelected
         }
-        
-                
     }
     
+    //MARK:- Outlets Adress textFields
+    
+    @IBOutlet weak var streetTextField: UITextField!
+    @IBOutlet weak var streetNumberTextField: UITextField!
+    @IBOutlet weak var mailBoxTextField: UITextField!
+    @IBOutlet weak var stateZipTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
+    
+    //MARK:- Buttons outlets
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var validateButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
+    
+    //MARK:- Buttons Action
+    
+    @IBAction func validateButton(_ sender: UIButton) {
+        createUser()
+    }
     
     
     override func viewDidLoad() {
@@ -105,6 +127,61 @@ class CreateUserFormTableViewController: UITableViewController {
             label.addConstraint(constraint)
         }
     }
+    
+    func createUser()
+    {
+        guard let email = mailTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        FireBaseManager.shared.createUser(email: email, password: password)
+        { (success) in
+            
+            if (success)
+            {
+                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+                {
+                    (_) in
+                    self.alertVC?.dismiss(animated: true, completion: nil)
+                }
+                
+                self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOk, alertAction2: nil)
+                print("User created")
+                
+            }
+                
+            else
+            {
+                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
+                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
+                    (_) in
+                    
+                    self.alertVC?.dismiss(animated: true, completion: nil)
+                    
+                }
+                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
+                
+                print("user not created")
+            }
+        }
+    }
+    
+    func showAlerteVC (title: String, message: String, alertAction1: UIAlertAction, alertAction2: UIAlertAction?)
+    {
+        self.alertVC = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        if let alertActionTest = alertAction2
+        {
+            self.alertVC?.addAction(alertAction1)
+            self.alertVC?.addAction(alertActionTest)
+        }
+            
+        else
+        {
+            self.alertVC?.addAction(alertAction1)
+        }
+        
+        self.present(self.alertVC!, animated: true, completion: nil)
+    }
+    
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

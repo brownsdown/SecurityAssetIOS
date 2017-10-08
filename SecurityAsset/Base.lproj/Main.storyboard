@@ -722,8 +722,8 @@
                                                     <color key="textColor" red="0.25882352939999997" green="0.68235294120000001" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-Mo-2PR">
-                                                    <rect key="frame" x="71.666666666666657" y="8" width="334.33333333333337" height="27.666666666666664"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qwg-Mo-2PR">
+                                                    <rect key="frame" x="71.666666666666657" y="9.0000000000001137" width="334.33333333333337" height="27.666666666666664"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -795,25 +795,28 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="General information" id="Maj-7l-OGy">
+                            <tableViewSection id="Maj-7l-OGy">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" id="vxZ-1x-Slx">
-                                        <rect key="frame" x="0.0" y="739.33333333333337" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vxZ-1x-Slx">
+                                        <rect key="frame" x="0.0" y="719.33333333333337" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vxZ-1x-Slx" id="aKH-95-Qhj">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2Y-Pe-n5K">
-                                                    <rect key="frame" x="97" y="8" width="100" height="30"/>
+                                                    <rect key="frame" x="97" y="7" width="100" height="30"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Vkb-i3-AcG"/>
                                                     </constraints>
                                                     <state key="normal" title="Validate"/>
+                                                    <connections>
+                                                        <action selector="validateButton:" destination="ANt-S3-w8k" eventType="touchUpInside" id="YnA-9K-ibW"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idZ-ca-Tm2">
-                                                    <rect key="frame" x="218" y="8" width="100" height="30"/>
+                                                    <rect key="frame" x="218" y="7" width="100" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="gcB-j6-VkV"/>
@@ -821,7 +824,7 @@
                                                     <state key="normal" title="Cancel"/>
                                                 </button>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-g2-1te">
-                                                    <rect key="frame" x="207" y="0.0" width="1" height="44.666666666666664"/>
+                                                    <rect key="frame" x="207" y="0.0" width="1" height="43.666666666666664"/>
                                                     <color key="backgroundColor" red="0.98823529409999999" green="1" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="9Wk-9a-kkJ"/>
@@ -849,10 +852,22 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="cancelButton" destination="idZ-ca-Tm2" id="YwH-h8-05Q"/>
-                        <outlet property="dateButton" destination="0GW-lc-vx5" id="GkA-1l-k2X"/>
+                        <outlet property="cancelButton" destination="idZ-ca-Tm2" id="JJB-Ff-9rh"/>
+                        <outlet property="cityTextField" destination="qwg-Mo-2PR" id="Xcc-XQ-rO6"/>
+                        <outlet property="countryTextField" destination="SxW-2Z-mFl" id="eSu-Pl-OTV"/>
+                        <outlet property="dateButton" destination="0GW-lc-vx5" id="4fV-xX-tlq"/>
                         <outlet property="dateLabel" destination="vpt-KO-Ulq" id="pYj-RY-uSl"/>
-                        <outlet property="validateButton" destination="m2Y-Pe-n5K" id="g2T-W5-zl7"/>
+                        <outlet property="firstNameTextField" destination="vTt-Y6-SBW" id="17j-f4-nA0"/>
+                        <outlet property="groupToJoinOrCreateTextField" destination="jWq-Pt-nGf" id="O8z-Ns-6ZD"/>
+                        <outlet property="lastNameTextField" destination="IZ4-Wi-Hur" id="8tA-iB-ttT"/>
+                        <outlet property="mailBoxTextField" destination="NGj-b2-bOS" id="wP4-3w-pib"/>
+                        <outlet property="mailTextField" destination="FjF-xp-Jg2" id="65J-yP-p59"/>
+                        <outlet property="passwordConfirmationTextField" destination="QxF-7V-rPx" id="vrM-aE-xEx"/>
+                        <outlet property="passwordTextField" destination="Q4O-KO-bKo" id="eZE-7p-MhL"/>
+                        <outlet property="stateZipTextField" destination="qy8-xJ-hAh" id="SLs-1f-yXc"/>
+                        <outlet property="streetNumberTextField" destination="iBZ-Vy-f2F" id="deu-di-bWe"/>
+                        <outlet property="streetTextField" destination="MDe-Ky-Cb7" id="65Z-tu-GIm"/>
+                        <outlet property="validateButton" destination="m2Y-Pe-n5K" id="HZ2-p0-mrR"/>
                         <outletCollection property="labels" destination="wC4-1r-Sio" collectionClass="NSMutableArray" id="RKw-co-9aK"/>
                         <outletCollection property="labels" destination="fZj-2m-qaP" collectionClass="NSMutableArray" id="Z0Q-4L-MCt"/>
                         <outletCollection property="labels" destination="KtI-4I-YR1" collectionClass="NSMutableArray" id="tHq-Hn-N7j"/>
