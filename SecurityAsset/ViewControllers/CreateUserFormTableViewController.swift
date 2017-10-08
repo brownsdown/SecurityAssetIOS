@@ -10,12 +10,33 @@ import UIKit
 
 class CreateUserFormTableViewController: UITableViewController {
     let numberOfRowsAtSection: [Int] = [7, 6, 1]
+    
     @IBOutlet var labels: [UILabel]!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var validateButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    var dateSelected: String = ""
+    {
+        didSet
+        {
+           dateLabel.text = dateSelected
+        }
+        
+                
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWidthsForLabels(labels: labels)
+        cancelButton.layer.cornerRadius = 15
+        validateButton.layer.cornerRadius = 15
+        dateButton.layer.cornerRadius = 15
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -23,10 +44,15 @@ class CreateUserFormTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    @IBAction func myUnwindCreateUserForm (unwindSegue: UIStoryboardSegue){
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: - Table view data source
     
@@ -47,11 +73,11 @@ class CreateUserFormTableViewController: UITableViewController {
     }
     
     private func calculateLabelWidth(label: UILabel) -> CGFloat {
-        let labelSize = label.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: label.frame.height))
+        let width = label.frame.width
         
-        return labelSize.width
+        return width
     }
-    
+
     private func calculateMaxLabelWidth(labels: [UILabel]) -> CGFloat {
         var maxLabelWidth:  CGFloat = CGFloat()
         for label in labels
@@ -65,6 +91,7 @@ class CreateUserFormTableViewController: UITableViewController {
         return maxLabelWidth
     }
     
+ 
     private func updateWidthsForLabels(labels: [UILabel]) {
         let maxLabelWidth = calculateMaxLabelWidth(labels: labels)
         for label in labels {

@@ -17,6 +17,7 @@
 		C86085441F8284E400A2460C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86085431F8284E400A2460C /* Assets.xcassets */; };
 		C86085471F8284E400A2460C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86085451F8284E400A2460C /* LaunchScreen.storyboard */; };
 		C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */; };
+		C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508D1F899287007FFDAF /* DatePickerViewController.swift */; };
 		C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */; };
 		C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CD1F8528CB00F9DF92 /* AppUser.swift */; };
 		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
@@ -39,6 +40,7 @@
 		C86085461F8284E400A2460C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C86085481F8284E400A2460C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserFormTableViewController.swift; sourceTree = "<group>"; };
+		C887508D1F899287007FFDAF /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C8B400CD1F8528CB00F9DF92 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		C8B400CE1F8528CB00F9DF92 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
 				C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */,
 				C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */,
+				C887508D1F899287007FFDAF /* DatePickerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */,
 				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
+				C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */,
 				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,
 				C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */,
 				C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */,
