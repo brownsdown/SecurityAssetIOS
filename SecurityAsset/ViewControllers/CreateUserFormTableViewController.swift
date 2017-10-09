@@ -5,18 +5,21 @@
 //  Created by michael moldawski on 7/10/17.
 //  Copyright © 2017 michael moldawski. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class CreateUserFormTableViewController: UITableViewController {
-   
-    let numberOfRowsAtSection: [Int] = [7, 6, 1]
+    
+    //MARK:- Attribut
+    var user: AppUser?
+//    let numberOfRowsAtSection: [Int] = [7, 6, 1]
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var alertVC: UIAlertController?
     
     @IBOutlet var labels: [UILabel]!
     
     //MARK:- Outlets General information textFields
-    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField! // ! bypass l'intialisateur et indique que ce n'est pas nil
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -46,7 +49,6 @@ class CreateUserFormTableViewController: UITableViewController {
     @IBOutlet weak var dateButton: UIButton!
     
     //MARK:- Buttons Action
-    
     @IBAction func validateButton(_ sender: UIButton) {
         createUser()
     }
@@ -78,28 +80,28 @@ class CreateUserFormTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        var rows: Int = 0
-        
-        if section < numberOfRowsAtSection.count {
-            rows = numberOfRowsAtSection[section]
-        }
-        
-        return rows
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 3
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        var rows: Int = 0
+//
+//        if section < numberOfRowsAtSection.count {
+//            rows = numberOfRowsAtSection[section]
+//        }
+//    
+//        return rows
+//    }
     
     private func calculateLabelWidth(label: UILabel) -> CGFloat {
         let width = label.frame.width
         
         return width
     }
-
+    
     private func calculateMaxLabelWidth(labels: [UILabel]) -> CGFloat {
         var maxLabelWidth:  CGFloat = CGFloat()
         for label in labels
@@ -113,7 +115,7 @@ class CreateUserFormTableViewController: UITableViewController {
         return maxLabelWidth
     }
     
- 
+    
     private func updateWidthsForLabels(labels: [UILabel]) {
         let maxLabelWidth = calculateMaxLabelWidth(labels: labels)
         for label in labels {
@@ -130,38 +132,55 @@ class CreateUserFormTableViewController: UITableViewController {
     
     func createUser()
     {
+        activityIndicator.startAnimating()
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
-        FireBaseManager.shared.createUser(email: email, password: password)
-        { (success) in
-            
-            if (success)
-            {
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+        guard let password2 = passwordConfirmationTextField.text else {return}
+        let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+        {
+            (_) in
+            self.alertVC?.dismiss(animated: true, completion: nil)
+        }
+        
+        if password == password2
+        {
+            FireBaseManager.shared.createUser(email: email, password: password)
+            { (success) in
+                
+                if (success)
                 {
-                    (_) in
-                    self.alertVC?.dismiss(animated: true, completion: nil)
-                }
-                
-                self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOk, alertAction2: nil)
-                print("User created")
-                
-            }
-                
-            else
-            {
-                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
-                    (_) in
+                   
+                   self.user = FireBaseManager.shared.createAppUser(emailTextField: self.mailTextField, firstNameTextField: self.firstNameTextField, lastNameTextField: self.lastNameTextField, groupToJoinOrCreateTextField: self.groupToJoinOrCreateTextField, dateLabel: self.dateLabel, streetTextField: self.streetTextField, streetNumberTextField: self.streetNumberTextField, stateZipTextField: self.stateZipTextField, mailBoxTextField: self.mailBoxTextField, cityTextField: self.cityTextField, countryTextField: self.countryTextField)
+                    var test = self.user
                     
-                    self.alertVC?.dismiss(animated: true, completion: nil)
+                    let alertActionOkSpecial = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+                    {
+                        (_) in
+                        self.alertVC?.dismiss(animated: true, completion: nil)
+                    }
+                    
+                    self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOkSpecial, alertAction2: nil)
+                    print("User created")
                     
                 }
-                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
-                
-                print("user not created")
+                    
+                else
+                {
+                    guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
+                    
+                    self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
+                    
+                    print("user not created")
+                }
+                self.activityIndicator.stopAnimating()
             }
         }
+        else
+        {
+            
+            self.showAlerteVC(title: "User creation", message: "The password and the password confirmation aren't the same!", alertAction1: alertActionOk, alertAction2: nil)
+        }
+        
     }
     
     func showAlerteVC (title: String, message: String, alertAction1: UIAlertAction, alertAction2: UIAlertAction?)
@@ -181,6 +200,8 @@ class CreateUserFormTableViewController: UITableViewController {
         
         self.present(self.alertVC!, animated: true, completion: nil)
     }
+    
+    
     
     /*
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

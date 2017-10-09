@@ -52,8 +52,8 @@ class LogInViewController: UIViewController {
         switch title {
         case "Sign in":
             signIn()
-        case "Create account":
-            createUser()
+//        case "Create account":
+//            createUser()
         case "Continue":
             moveForward()
         case "Sign out":

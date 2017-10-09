@@ -56,7 +56,38 @@ class FireBaseManager: NSObject
                 completion(true)
             }
         }
-       
+    }
+    
+    func createAppUser(emailTextField: UITextField, firstNameTextField: UITextField, lastNameTextField: UITextField, groupToJoinOrCreateTextField: UITextField, dateLabel: UILabel, streetTextField: UITextField, streetNumberTextField: UITextField, stateZipTextField: UITextField, mailBoxTextField: UITextField, cityTextField: UITextField, countryTextField: UITextField) -> AppUser?
+    {
+        var userApp: AppUser?
+        let currentUser = FireBaseManager.shared.currentUser
+        let email = emailTextField.text ?? ""
+        let firstName = firstNameTextField.text ?? ""
+        let lastName = lastNameTextField.text ?? ""
+        let groupToJoin = groupToJoinOrCreateTextField.text ?? ""
+        let birthDate = dateLabel.text ?? ""
+        
+        //MARK:- Adress Attribut
+        let street = streetTextField.text ?? ""
+        let streetNumber = Int( streetNumberTextField.text ?? "0") ?? 0
+        
+        
+        let mailBox = Int(mailBoxTextField.text ?? "0") ?? 0
+        let stateZip = Int(stateZipTextField.text ?? "0") ?? 0
+        let city = cityTextField.text ?? ""
+        let country = countryTextField.text ?? ""
+        
+        
+        let adresse = Adress(number: streetNumber, street: street, city: city, cp: stateZip, mailBox: mailBox, country: country)
+        let phonePosition = PhonePosition()
+        let location = Location()
+        var group = Group()
+        group.addGroup(newGroup: groupToJoin)
+        
+        userApp = AppUser(group: group, firstName: firstName, lastName: lastName, email: email, adress: adresse, birthDate: birthDate, location: location, phonePosition: phonePosition, fireBaseUser: currentUser)
+        
+        return userApp
     }
 }
 

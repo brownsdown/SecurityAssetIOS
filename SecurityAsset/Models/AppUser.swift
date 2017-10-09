@@ -15,6 +15,7 @@ class AppUser
     var group: Group = Group(group: [String]())
     var firstName: String = ""
     var lastName: String = ""
+    var email: String = ""
     var adress: Adress = Adress()
     var bithDate: String = ""
     var location: Location = Location()
@@ -35,16 +36,31 @@ class AppUser
         }
     }
     
-    init(userState: StateUser, group: Group,firstName: String, lastName: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
+    init(userState: StateUser, group: Group,firstName: String, lastName: String, email: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
     {
         self.userState = userState
         self.group = group
         self.firstName = firstName
         self.lastName = lastName
+        self.email = email
         self.adress = adress
         self.bithDate = birthDate
         self.location = location
         self.phonePosition = phonePosition
+    }
+    
+    init(group: Group,firstName: String, lastName: String, email: String,adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition, fireBaseUser: User?)
+    {
+        self.userState = StateUser.safe
+        self.group = group
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.adress = adress
+        self.bithDate = birthDate
+        self.location = location
+        self.phonePosition = phonePosition
+        self.userFireBase = fireBaseUser
     }
     
 }

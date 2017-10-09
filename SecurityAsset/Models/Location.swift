@@ -18,3 +18,4 @@ struct Location
         self.longitude = longitude
     }
 }
+

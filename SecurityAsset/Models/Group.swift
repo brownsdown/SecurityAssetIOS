@@ -12,6 +12,8 @@ struct Group
 {
     var group = [String]()
   
+    init()
+    {}
     
     init(group: [String])
     {

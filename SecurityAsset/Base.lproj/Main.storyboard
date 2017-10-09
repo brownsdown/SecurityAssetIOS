@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ANt-S3-w8k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1H-df-YAq">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -115,6 +116,7 @@
                                 <state key="normal" title="Create account"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jx1-GX-Sb1"/>
+                                    <segue destination="ANt-S3-w8k" kind="show" id="lMf-RR-hOw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-kh-sGo">
@@ -830,6 +832,10 @@
                                                         <constraint firstAttribute="width" constant="1" id="9Wk-9a-kkJ"/>
                                                     </constraints>
                                                 </view>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2Qz-cU-YrM">
+                                                    <rect key="frame" x="370" y="12" width="20" height="20"/>
+                                                    <color key="color" red="0.25882352939999997" green="0.68235294120000001" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98823529409999999" green="1" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -839,6 +845,8 @@
                                                 <constraint firstItem="cf3-g2-1te" firstAttribute="leading" secondItem="m2Y-Pe-n5K" secondAttribute="trailing" constant="10" id="W9O-ft-dBR"/>
                                                 <constraint firstItem="idZ-ca-Tm2" firstAttribute="centerY" secondItem="aKH-95-Qhj" secondAttribute="centerY" id="b6E-pO-dca"/>
                                                 <constraint firstAttribute="bottom" secondItem="cf3-g2-1te" secondAttribute="bottom" id="etq-kd-Czt"/>
+                                                <constraint firstItem="2Qz-cU-YrM" firstAttribute="centerY" secondItem="aKH-95-Qhj" secondAttribute="centerY" id="nNU-r0-Uh3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2Qz-cU-YrM" secondAttribute="trailing" constant="16" id="u4b-4r-t5V"/>
                                                 <constraint firstItem="m2Y-Pe-n5K" firstAttribute="centerY" secondItem="aKH-95-Qhj" secondAttribute="centerY" id="vPm-Vd-go3"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -852,6 +860,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="activityIndicator" destination="2Qz-cU-YrM" id="E2D-Tu-2DH"/>
                         <outlet property="cancelButton" destination="idZ-ca-Tm2" id="JJB-Ff-9rh"/>
                         <outlet property="cityTextField" destination="qwg-Mo-2PR" id="Xcc-XQ-rO6"/>
                         <outlet property="countryTextField" destination="SxW-2Z-mFl" id="eSu-Pl-OTV"/>

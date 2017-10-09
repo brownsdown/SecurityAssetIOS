@@ -25,9 +25,8 @@ class DatePickerViewController: UIViewController {
         {
             dateFormatter.dateFormat = "dd/MM/yyyy"
             selectedDate = dateFormatter.string(from: datePicker.date)
-
+            
             createUserVC.dateSelected = selectedDate
-
         }
     }
     
