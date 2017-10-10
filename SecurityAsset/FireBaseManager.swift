@@ -89,6 +89,16 @@ class FireBaseManager: NSObject
         
         return userApp
     }
+    
+    static func storeUserInDB(appUser: AppUser)
+    {
+        databaseRef.child("Users").child(appUser.email)
+//        databaseRef.child("User").child(appUser.email).child("firstName").setValue(appUser.firstName)
+//        databaseRef.child("User").child(appUser.email).child("lastName").setValue(appUser.lastName)
+//        databaseRef.child("User").child(appUser.email).childByAutoId().setValue(appUser.lastName)
+//        databaseRef.child("User").child(appUser.email).childByAutoId().setValue(appUser.bithDate)
+//        databaseRef.child("User").child(appUser.email).childByAutoId().setValue(appUser.adress)
+    }
 }
 
 
