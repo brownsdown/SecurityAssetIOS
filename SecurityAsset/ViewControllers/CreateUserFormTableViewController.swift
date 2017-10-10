@@ -60,21 +60,22 @@ class CreateUserFormTableViewController: UITableViewController {
         cancelButton.layer.cornerRadius = 15
         validateButton.layer.cornerRadius = 15
         dateButton.layer.cornerRadius = 15
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     @IBAction func myUnwindCreateUserForm (unwindSegue: UIStoryboardSegue){
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Segue will be executed")
+        if let loginVC = segue.destination as? LogInViewController
+        {
+            loginVC.user = self.user
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -151,16 +152,14 @@ class CreateUserFormTableViewController: UITableViewController {
                 {
                    
                    self.user = FireBaseManager.shared.createAppUser(emailTextField: self.mailTextField, firstNameTextField: self.firstNameTextField, lastNameTextField: self.lastNameTextField, groupToJoinOrCreateTextField: self.groupToJoinOrCreateTextField, dateLabel: self.dateLabel, streetTextField: self.streetTextField, streetNumberTextField: self.streetNumberTextField, stateZipTextField: self.stateZipTextField, mailBoxTextField: self.mailBoxTextField, cityTextField: self.cityTextField, countryTextField: self.countryTextField)
-                    var test = self.user
                     
                     let alertActionOkSpecial = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
                     {
                         (_) in
                         self.alertVC?.dismiss(animated: true, completion: nil)
+                         self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
                     }
-                    
                     self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOkSpecial, alertAction2: nil)
-                    print("User created")
                     
                 }
                     

@@ -30,6 +30,7 @@ class AppUser
         if let fireBaseUserTest = fireBaseUser
         {
             self.userFireBase = fireBaseUserTest
+            self.email = (userFireBase?.email)!
         }
         else{
             return nil

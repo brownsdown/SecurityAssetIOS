@@ -15,10 +15,16 @@ import FirebaseAuth
 class LogInViewController: UIViewController {
     
     //MARK:- Attribut
-    var user: AppUser?
+    let defaults = UserDefaults.standard
     static var fireBaseAuthError: Error?
     var alertVC: UIAlertController?
-    
+    var user: AppUser? = nil
+    {
+        didSet
+        {
+            mailTextField.text = user?.email
+        }
+    }
     
     
     
@@ -33,11 +39,13 @@ class LogInViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        mailTextField.text = (defaults.value(forKey: "email")) as? String
+//      passwordTextField.text = (defaults.value(forKey: "password")) as? String
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 15
         createAccountButton.layer.cornerRadius = 15
         forgotPasswordButton.layer.cornerRadius = 15
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,15 +53,18 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @IBAction func myUnwindLoginForm (unwindSegue: UIStoryboardSegue){
+        
+    }
     
     @IBAction func buttonClick(_ sender: UIButton) {
         guard let title = sender.titleLabel?.text else{return}
-        switch title {
+        switch title
+        {
         case "Sign in":
             signIn()
-//        case "Create account":
-//            createUser()
+        case "Create account":
+            goTocreateUser()
         case "Continue":
             moveForward()
         case "Sign out":
@@ -61,7 +72,6 @@ class LogInViewController: UIViewController {
         default:
             print("default")
         }
-        
     }
     
     
@@ -70,13 +80,24 @@ class LogInViewController: UIViewController {
     {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
+        let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+        {
+            (_) in
+            self.alertVC?.dismiss(animated: true, completion: nil)
+        }
+        if password == ""
+        {
+            self.showAlerteVC(title: "Login", message: "The Password is empty", alertAction1: alertActionOk, alertAction2: nil)
+        }
         FireBaseManager.shared.login(email: email, password: password) { (success: Bool) in
             if (success)
             {
-                print(FireBaseManager.shared.currentUser!)
                 self.user = AppUser(fireBaseUser: FireBaseManager.shared.currentUser!)
                 self.mailTextField.isUserInteractionEnabled = false
                 self.mailTextField.backgroundColor = UIColor.darkGray
+             
+                self.defaults.set(self.user?.email, forKey: "email")//
+                self.defaults.set(password, forKey: "password")//
                 
                 self.passwordTextField.isUserInteractionEnabled = false
                 self.passwordTextField.backgroundColor = UIColor.darkGray
@@ -85,64 +106,28 @@ class LogInViewController: UIViewController {
                 self.createAccountButton.setTitle("Sign out", for: UIControlState.normal)
                 if !(self.user?.userFireBase?.isEmailVerified)!
                 {
+                    self.showAlerteVCMailNotVerified()
                     self.logInButton.isEnabled = false
                     self.logInButton.backgroundColor = UIColor.darkGray
                 }
-                
                 self.forgotPasswordButton.isEnabled = false
                 self.forgotPasswordButton.isHidden = true
                 print("login successed")
             }
-            else
-            {
-                print("not succes")
-            }
         }
-        
     }
     
-    func createUser()
+    func goTocreateUser()
     {
-        guard let email = mailTextField.text else {return}
-        guard let password = passwordTextField.text else {return}
-        FireBaseManager.shared.createUser(email: email, password: password)
-        { (success) in
-            
-            if (success)
-            {
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
-                {
-                    (_) in
-                    self.alertVC?.dismiss(animated: true, completion: nil)
-                }
-                
-                self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before clicking on \((self.logInButton.titleLabel?.text)!)", alertAction1: alertActionOk, alertAction2: nil)
-                print("User created")
-                
-            }
-                
-            else
-            {
-                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
-                    (_) in
-                    
-                    self.alertVC?.dismiss(animated: true, completion: nil)
-                    
-                }
-                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
-                
-                print("user not created")
-            }
-        }
+        self.performSegue(withIdentifier: "goToCreateUser", sender: nil)
     }
     
     func signOut()
     {
-        print("test")
         try! Auth.auth().signOut()
         let currentUSer = Auth.auth().currentUser
         self.user = AppUser(fireBaseUser: currentUSer )
+        passwordTextField.text = ""
         
         self.mailTextField.isUserInteractionEnabled = true
         self.mailTextField.backgroundColor = UIColor.white
@@ -158,7 +143,6 @@ class LogInViewController: UIViewController {
         
         self.forgotPasswordButton.isEnabled = true
         self.forgotPasswordButton.isHidden = false
-        
     }
     
     
@@ -167,36 +151,6 @@ class LogInViewController: UIViewController {
         if (user?.userFireBase?.isEmailVerified)!
         {
             self.performSegue(withIdentifier: "tabBarRootSegue", sender: nil)
-        }
-            
-        else
-        {
-            
-            let alertActionYes = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default)
-            {
-                (_) in
-                self.user?.userFireBase?.sendEmailVerification(completion: nil)
-                
-                self.alertVC?.dismiss(animated: true, completion: nil)
-                
-                let alertExplanationVC = UIAlertController(title: "To Do", message: "Please sign out and come back after validated your email adress by following instruction sent to you by email.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
-                { (_) in
-                    self.alertVC?.dismiss(animated: true, completion: nil)
-                }
-                
-                alertExplanationVC.addAction(alertActionOk)
-                self.present(alertExplanationVC, animated: true, completion: nil)
-            }
-            
-            let alertActionNo = UIAlertAction(title: "No", style: UIAlertActionStyle.default) {
-                (_) in
-                
-                self.alertVC?.dismiss(animated: true, completion: nil)
-                
-            }
-            
-            self.showAlerteVC(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \((self.user?.userFireBase?.email)!)?", alertAction1: alertActionYes, alertAction2: alertActionNo)
         }
     }
     
@@ -216,6 +170,34 @@ class LogInViewController: UIViewController {
         }
         
         self.present(self.alertVC!, animated: true, completion: nil)
+    }
+    
+    func showAlerteVCMailNotVerified ()
+    {
+        let alertActionYes = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default)
+        {
+            (_) in
+            self.user?.userFireBase?.sendEmailVerification(completion: nil)
+            
+            self.alertVC?.dismiss(animated: true, completion: nil)
+            
+            let alertExplanationVC = UIAlertController(title: "To Do", message: "Please sign out and come back after validated your email adress by following instruction sent to you by email.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+            { (_) in
+                self.alertVC?.dismiss(animated: true, completion: nil)
+            }
+            
+            alertExplanationVC.addAction(alertActionOk)
+            self.present(alertExplanationVC, animated: true, completion: nil)
+        }
+        
+        let alertActionNo = UIAlertAction(title: "No", style: UIAlertActionStyle.default) {
+            (_) in
+            
+            self.alertVC?.dismiss(animated: true, completion: nil)
+        }
+        
+        self.showAlerteVC(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \((self.user?.userFireBase?.email)!)?", alertAction1: alertActionYes, alertAction2: alertActionNo)
     }
     
     

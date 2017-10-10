@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		3140170EAB02B91C543C63A7 /* Pods_SecurityAsset.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */; };
 		C82F0F621F8B625C006CD74F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C82F0F611F8B625C006CD74F /* Localizable.strings */; };
-		C82F0F641F8B7DA9006CD74F /* SecurityAssetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82F0F631F8B7DA9006CD74F /* SecurityAssetError.swift */; };
 		C8306A4F1F867C2B0060129E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A4E1F867C2B0060129E /* Group.swift */; };
 		C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */; };
+		C85A1E301F8CE6AA00D7C8D5 /* StateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D01F8528CC00F9DF92 /* StateUser.swift */; };
 		C85D7E361F83A01B001AA88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */; };
 		C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */; };
 		C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C860853C1F8284E400A2460C /* AppDelegate.swift */; };
@@ -24,7 +24,6 @@
 		C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CD1F8528CB00F9DF92 /* AppUser.swift */; };
 		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
 		C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */; };
-		C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D01F8528CC00F9DF92 /* StateUser.swift */; };
 		C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D11F8528CC00F9DF92 /* Adresse.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		33E231E9300909496B472B30 /* Pods-SecurityAsset.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.release.xcconfig"; sourceTree = "<group>"; };
 		741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecurityAsset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82F0F611F8B625C006CD74F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		C82F0F631F8B7DA9006CD74F /* SecurityAssetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityAssetError.swift; sourceTree = "<group>"; };
 		C8306A4E1F867C2B0060129E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
 				C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */,
 				C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */,
-				C82F0F631F8B7DA9006CD74F /* SecurityAssetError.swift */,
 				C887508D1F899287007FFDAF /* DatePickerViewController.swift */,
 			);
 			path = ViewControllers;
@@ -285,19 +282,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8B400D51F8528CC00F9DF92 /* StateUser.swift in Sources */,
-				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
 				C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */,
 				C860853D1F8284E400A2460C /* AppDelegate.swift in Sources */,
-				C82F0F641F8B7DA9006CD74F /* SecurityAssetError.swift in Sources */,
 				C8306A4F1F867C2B0060129E /* Group.swift in Sources */,
 				C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */,
 				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
+				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
 				C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */,
 				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,
 				C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */,
 				C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */,
+				C85A1E301F8CE6AA00D7C8D5 /* StateUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
