@@ -58,6 +58,13 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let infoUserVC = segue.destination as? UserInformationViewController
+        {
+            infoUserVC.user = self.user
+        }
+    }
+    
     @IBAction func myUnwindLoginForm (unwindSegue: UIStoryboardSegue){
         
     }

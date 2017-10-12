@@ -106,7 +106,7 @@ class FireBaseManager: NSObject
         {
             j += 1
             
-            usersRefTable.child((appUser.userFireBase?.uid)!).child("group").child(String(j)).setValue(group)
+            usersRefTable.child((appUser.userFireBase?.uid)!).child("Group").child(String(j)).setValue(group)
         }
         
     }
@@ -121,11 +121,11 @@ class FireBaseManager: NSObject
     static func storeAdressInDB(usersRefTable: DatabaseReference, appUser: AppUser )
     {
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Street").setValue(appUser.adress.street)
-        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("number").setValue(appUser.adress.number)
-        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("mailbox").setValue(appUser.adress.mailBox)
-        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("state zip").setValue(appUser.adress.stateZip)
-        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("city").setValue(appUser.adress.city)
-        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("country").setValue(appUser.adress.country)
+        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Number").setValue(appUser.adress.number)
+        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Mailbox").setValue(appUser.adress.mailBox)
+        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Statezip").setValue(appUser.adress.stateZip)
+        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("City").setValue(appUser.adress.city)
+        usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Country").setValue(appUser.adress.country)
     }
     
     static func storeLocationInDB(usersRefTable: DatabaseReference, appUser: AppUser )
@@ -142,11 +142,17 @@ class FireBaseManager: NSObject
     
     static func storeGroupInDB(groupRefTable: DatabaseReference, appUser: AppUser )
     {
+        
         var i = 0
-        for group in appUser.group.group
+        if !(appUser.group.group[0] == "")
         {
-            i += 1
-            groupRefTable.child(group).child((appUser.userFireBase?.uid)!).setValue(appUser.email)
+            for group in appUser.group.group
+            {
+                
+               
+                i += 1
+                groupRefTable.child(group).child((appUser.userFireBase?.uid)!).setValue(appUser.email)
+            }
         }
     }
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseDatabase
 
 class AppUser
 {
@@ -28,7 +29,19 @@ class AppUser
     init?(fireBaseUser: User?)
     {
         if let fireBaseUserTest = fireBaseUser
-        {
+        {   let usersRefTable = Database.database().reference().child("Users")
+            let userRefTable = usersRefTable.child((fireBaseUser?.uid)!)
+        userRefTable.child("Firstname").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+                self.firstName = (snapshot.value as? String ?? "")!
+            })
+            userRefTable.child("Lastname").observeSingleEvent(of:.value, with: { (snapshot) in
+                self.lastName = (snapshot.value as? String)!
+            })
+            userRefTable.child("Birthdate").observeSingleEvent(of:.value, with: { (snapshot) in
+                self.bithDate = (snapshot.value as? String)!
+            })
+            self.adressFromFireBase(userRef: userRefTable)
             self.userFireBase = fireBaseUserTest
             self.email = (userFireBase?.email)!
         }
@@ -62,6 +75,37 @@ class AppUser
         self.location = location
         self.phonePosition = phonePosition
         self.userFireBase = fireBaseUser
+    }
+    
+    func adressFromFireBase(userRef: DatabaseReference)
+    {
+        
+        let userAdressRef = userRef.child("Adress")
+        userAdressRef.child("Number").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+           self.adress.number = (snapshot.value as? Int ?? 0)!
+        })
+        userAdressRef.child("Street").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            self.adress.street = (snapshot.value as? String ?? "")!
+        })
+        userAdressRef.child("City").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            self.adress.city = (snapshot.value as? String)!
+        })
+        userAdressRef.child("Statezip").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            self.adress.stateZip = (snapshot.value as? Int ?? 0)!
+        })
+        userAdressRef.child("MailBox").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            self.adress.mailBox = (snapshot.value as? Int ?? 0)!
+        })
+        userAdressRef.child("Country").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            self.adress.country = (snapshot.value as? String ?? "")!
+        })
+    
     }
     
 }
