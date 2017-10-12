@@ -45,9 +45,10 @@ class LogInViewController: UIViewController {
         logInButton.layer.cornerRadius = 15
         createAccountButton.layer.cornerRadius = 15
         forgotPasswordButton.layer.cornerRadius = 15
-        FireBaseManager.databaseRef.child("User2").child("test").setValue("hi")
-        FireBaseManager.databaseRef.child("User2").child("test2").setValue("coucou")
-      
+
+        //        FireBaseManager.databaseRef.child("User2").child("test").setValue("hi")
+//        FireBaseManager.databaseRef.child("User2").child("test2").setValue("coucou")
+//
         
         
     }

@@ -12,7 +12,7 @@ class CreateUserFormTableViewController: UITableViewController {
     
     //MARK:- Attribut
     var user: AppUser?
-//    let numberOfRowsAtSection: [Int] = [7, 6, 1]
+    //    let numberOfRowsAtSection: [Int] = [7, 6, 1]
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var alertVC: UIAlertController?
     
@@ -81,21 +81,27 @@ class CreateUserFormTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 3
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        var rows: Int = 0
-//
-//        if section < numberOfRowsAtSection.count {
-//            rows = numberOfRowsAtSection[section]
-//        }
-//    
-//        return rows
-//    }
+    //    override func numberOfSections(in tableView: UITableView) -> Int {
+    //        // #warning Incomplete implementation, return the number of sections
+    //        return 3
+    //    }
+    //
+    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //        // #warning Incomplete implementation, return the number of rows
+    //        var rows: Int = 0
+    //
+    //        if section < numberOfRowsAtSection.count {
+    //            rows = numberOfRowsAtSection[section]
+    //        }
+    //
+    //        return rows
+    //    }
+    
+    // Cette ligne sert à ne pas hilgité la ligne de la tableview
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     
     private func calculateLabelWidth(label: UILabel) -> CGFloat {
         let width = label.frame.width
@@ -150,14 +156,17 @@ class CreateUserFormTableViewController: UITableViewController {
                 
                 if (success)
                 {
-                   self.user = FireBaseManager.shared.createAppUser(emailTextField: self.mailTextField, firstNameTextField: self.firstNameTextField, lastNameTextField: self.lastNameTextField, groupToJoinOrCreateTextField: self.groupToJoinOrCreateTextField, dateLabel: self.dateLabel, streetTextField: self.streetTextField, streetNumberTextField: self.streetNumberTextField, stateZipTextField: self.stateZipTextField, mailBoxTextField: self.mailBoxTextField, cityTextField: self.cityTextField, countryTextField: self.countryTextField)
-                        FireBaseManager.storeUserInDB(appUser: self.user!)
+                    self.user = FireBaseManager.shared.createAppUser(emailTextField: self.mailTextField, firstNameTextField: self.firstNameTextField, lastNameTextField: self.lastNameTextField, groupToJoinOrCreateTextField: self.groupToJoinOrCreateTextField, dateLabel: self.dateLabel, streetTextField: self.streetTextField, streetNumberTextField: self.streetNumberTextField, stateZipTextField: self.stateZipTextField, mailBoxTextField: self.mailBoxTextField, cityTextField: self.cityTextField, countryTextField: self.countryTextField)
+                    
+                    FireBaseManager.storeUserInDB(appUser: self.user!)
+                    
                     let alertActionOkSpecial = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
                     {
                         (_) in
                         self.alertVC?.dismiss(animated: true, completion: nil)
-                         self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+                        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
                     }
+                    
                     self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOkSpecial, alertAction2: nil)
                 }
                     

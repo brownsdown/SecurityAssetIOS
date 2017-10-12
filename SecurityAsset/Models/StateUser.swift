@@ -9,6 +9,6 @@
 import Foundation
 enum StateUser: String
 {
-    case safe = "true"
-    case unsafe = "false"
+    case safe = "Safe"
+    case unsafe = "Unsafe"
 }

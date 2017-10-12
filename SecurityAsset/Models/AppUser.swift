@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class AppUser
 {
-    var userState: StateUser = StateUser.safe
+    var userState = StateUser.safe
     var group: Group = Group(group: [String]())
     var firstName: String = ""
     var lastName: String = ""
