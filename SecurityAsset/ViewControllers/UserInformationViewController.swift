@@ -13,11 +13,13 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     {
         didSet
         {
-            self.loadViewIfNeeded()
+            
         }
         
     }
-    var cellTitle: [String] = ["Firstname", "Lastname","Birthdate"]
+    
+    var userProperty = [Any]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -26,10 +28,13 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
-        
-        // Do any additional setup after loading the view.
+        let mirroredObject = Mirror(reflecting: self.user!)
+        for (index, attr) in mirroredObject.children.enumerated() {
+            if let propertyName = attr.label as String! {
+                print("Attr \(index): \(propertyName) = \(attr.value)")
+            }
+        }
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -34,6 +34,8 @@ class CreateUserFormTableViewController: UITableViewController {
         }
     }
     
+    var alertActionOkSpecial: UIAlertAction? = nil
+    var alertActionOk: UIAlertAction? = nil
     //MARK:- Outlets Adress textFields
     
     @IBOutlet weak var streetTextField: UITextField!
@@ -60,6 +62,7 @@ class CreateUserFormTableViewController: UITableViewController {
         cancelButton.layer.cornerRadius = 15
         validateButton.layer.cornerRadius = 15
         dateButton.layer.cornerRadius = 15
+        self.initAlertActions()
     }
     
     @IBAction func myUnwindCreateUserForm (unwindSegue: UIStoryboardSegue){
@@ -97,45 +100,9 @@ class CreateUserFormTableViewController: UITableViewController {
     //        return rows
     //    }
     
-    // Cette ligne sert à ne pas hilgité la ligne de la tableview
-    
+    // Cette ligne sert à ne pas hilighité la ligne de la tableview
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
-    }
-    
-    
-    private func calculateLabelWidth(label: UILabel) -> CGFloat {
-        let width = label.frame.width
-        
-        return width
-    }
-    
-    private func calculateMaxLabelWidth(labels: [UILabel]) -> CGFloat {
-        var maxLabelWidth:  CGFloat = CGFloat()
-        for label in labels
-        {
-            let temp = label.bounds.width
-            if maxLabelWidth < temp
-            {
-                maxLabelWidth = temp
-            }
-        }
-        return maxLabelWidth
-    }
-    
-    
-    private func updateWidthsForLabels(labels: [UILabel]) {
-        let maxLabelWidth = calculateMaxLabelWidth(labels: labels)
-        for label in labels {
-            let constraint = NSLayoutConstraint(item: label,
-                                                attribute: .width,
-                                                relatedBy: .equal,
-                                                toItem: nil,
-                                                attribute: .notAnAttribute,
-                                                multiplier: 1,
-                                                constant: maxLabelWidth)
-            label.addConstraint(constraint)
-        }
     }
     
     func createUser()
@@ -144,11 +111,6 @@ class CreateUserFormTableViewController: UITableViewController {
         guard let email = mailTextField.text else {return}
         guard let password = passwordTextField.text else {return}
         guard let password2 = passwordConfirmationTextField.text else {return}
-        let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
-        {
-            (_) in
-            self.alertVC?.dismiss(animated: true, completion: nil)
-        }
         
         if password == password2
         {
@@ -161,51 +123,23 @@ class CreateUserFormTableViewController: UITableViewController {
                     
                     FireBaseManager.storeUserInDB(appUser: self.user!)
                     
-                    let alertActionOkSpecial = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
-                    {
-                        (_) in
-                        self.alertVC?.dismiss(animated: true, completion: nil)
-                        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
-                    }
-                    
-                    self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: alertActionOkSpecial, alertAction2: nil)
+                    self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: self.alertActionOkSpecial!, alertAction2: nil)
                 }
                     
                 else
                 {
                     guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
                     
-                    self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: alertActionOk, alertAction2: nil)
-                    
-                    print("user not created")
+                    self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: self.alertActionOk!, alertAction2: nil)
+
                 }
                 self.activityIndicator.stopAnimating()
             }
         }
         else
         {
-            
-            self.showAlerteVC(title: "User creation", message: "The password and the password confirmation aren't the same!", alertAction1: alertActionOk, alertAction2: nil)
+            self.showAlerteVC(title: "User creation", message: "The password and the password confirmation aren't the same!", alertAction1: self.alertActionOk!, alertAction2: nil)
         }
         
     }
-    
-    func showAlerteVC (title: String, message: String, alertAction1: UIAlertAction, alertAction2: UIAlertAction?)
-    {
-        self.alertVC = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        
-        if let alertActionTest = alertAction2
-        {
-            self.alertVC?.addAction(alertAction1)
-            self.alertVC?.addAction(alertActionTest)
-        }
-            
-        else
-        {
-            self.alertVC?.addAction(alertAction1)
-        }
-        
-        self.present(self.alertVC!, animated: true, completion: nil)
-    }
-    
 }
