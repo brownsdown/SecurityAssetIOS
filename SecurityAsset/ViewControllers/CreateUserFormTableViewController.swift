@@ -67,7 +67,7 @@ class CreateUserFormTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Segue will be executed")
+       
         if let loginVC = segue.destination as? LogInViewController
         {
             loginVC.user = self.user
@@ -98,6 +98,7 @@ class CreateUserFormTableViewController: UITableViewController {
     //    }
     
     // Cette ligne sert à ne pas hilgité la ligne de la tableview
+    
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }
@@ -180,7 +181,6 @@ class CreateUserFormTableViewController: UITableViewController {
                 }
                 self.activityIndicator.stopAnimating()
             }
-            
         }
         else
         {

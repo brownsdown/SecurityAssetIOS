@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class AppUser
 {
+    static var completion: Int = 0
     var userState = StateUser.safe
     var group: Group = Group(group: [String]())
     var firstName: String = ""
@@ -29,21 +30,27 @@ class AppUser
     init?(fireBaseUser: User?)
     {
         if let fireBaseUserTest = fireBaseUser
-        {   let usersRefTable = Database.database().reference().child("Users")
+        {
+            let usersRefTable = Database.database().reference().child("Users")
             let userRefTable = usersRefTable.child((fireBaseUser?.uid)!)
-        userRefTable.child("Firstname").observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            userRefTable.child("Firstname").observeSingleEvent(of:.value, with: { (snapshot) in
             
                 self.firstName = (snapshot.value as? String ?? "")!
+                AppUser.completion += 1
             })
             userRefTable.child("Lastname").observeSingleEvent(of:.value, with: { (snapshot) in
                 self.lastName = (snapshot.value as? String)!
+                AppUser.completion += 1
             })
             userRefTable.child("Birthdate").observeSingleEvent(of:.value, with: { (snapshot) in
                 self.bithDate = (snapshot.value as? String)!
+                AppUser.completion += 1
             })
             self.adressFromFireBase(userRef: userRefTable)
             self.userFireBase = fireBaseUserTest
             self.email = (userFireBase?.email)!
+            self.groupFromFireBase(userRef: userRefTable)
         }
         else{
             return nil
@@ -83,30 +90,50 @@ class AppUser
         let userAdressRef = userRef.child("Adress")
         userAdressRef.child("Number").observeSingleEvent(of:.value, with: { (snapshot) in
             
-           self.adress.number = (snapshot.value as? Int ?? 0)!
+            self.adress.number = (snapshot.value as? Int ?? 0)!
+            AppUser.completion += 1
         })
         userAdressRef.child("Street").observeSingleEvent(of:.value, with: { (snapshot) in
             
             self.adress.street = (snapshot.value as? String ?? "")!
+            AppUser.completion += 1
         })
         userAdressRef.child("City").observeSingleEvent(of:.value, with: { (snapshot) in
             
             self.adress.city = (snapshot.value as? String)!
+            AppUser.completion += 1
         })
         userAdressRef.child("Statezip").observeSingleEvent(of:.value, with: { (snapshot) in
             
             self.adress.stateZip = (snapshot.value as? Int ?? 0)!
+            AppUser.completion += 1
         })
-        userAdressRef.child("MailBox").observeSingleEvent(of:.value, with: { (snapshot) in
+        userAdressRef.child("Mailbox").observeSingleEvent(of:.value, with: { (snapshot) in
             
             self.adress.mailBox = (snapshot.value as? Int ?? 0)!
+            AppUser.completion += 1
         })
         userAdressRef.child("Country").observeSingleEvent(of:.value, with: { (snapshot) in
             
             self.adress.country = (snapshot.value as? String ?? "")!
+            AppUser.completion += 1
         })
-    
     }
+    func groupFromFireBase(userRef: DatabaseReference)
+    {
+        var j: Int = 0
+        let userGroupRef = userRef.child("Group")
+        userGroupRef.observeSingleEvent(of:.value, with: { (snapshot) in
+            
+            for i in 0 ..< snapshot.childrenCount
+            {
+                j += 1
+                self.group.group.append((snapshot.childSnapshot(forPath: String(j)).value as? String ?? "")!)
+            }
+            AppUser.completion += 1
+        })
+    }
+    
     
 }
 

@@ -27,6 +27,7 @@
 		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
 		C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */; };
 		C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D11F8528CC00F9DF92 /* Adresse.swift */; };
+		C8D367751F90BDC30056A445 /* MyUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D367741F90BDC30056A445 /* MyUITabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePosition.swift; sourceTree = "<group>"; };
 		C8B400D01F8528CC00F9DF92 /* StateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUser.swift; sourceTree = "<group>"; };
 		C8B400D11F8528CC00F9DF92 /* Adresse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adresse.swift; sourceTree = "<group>"; };
+		C8D367741F90BDC30056A445 /* MyUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITabBarController.swift; sourceTree = "<group>"; };
 		E0EFEB562CD03FD513E8BDCB /* Pods-SecurityAsset.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 				C887508D1F899287007FFDAF /* DatePickerViewController.swift */,
 				C833ACC51F8F8D9E00B19D24 /* UserInformationViewController.swift */,
 				C861094C1F8F9D3B009107C3 /* UserInformationTableViewCell.swift */,
+				C8D367741F90BDC30056A445 /* MyUITabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				C85D7E391F83C0AE001AA88A /* FireBaseManager.swift in Sources */,
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
 				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
+				C8D367751F90BDC30056A445 /* MyUITabBarController.swift in Sources */,
 				C833ACC61F8F8D9E00B19D24 /* UserInformationViewController.swift in Sources */,
 				C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */,
 				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,

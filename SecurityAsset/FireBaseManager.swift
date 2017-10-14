@@ -94,22 +94,17 @@ class FireBaseManager: NSObject
     {
         let usersRefTable = databaseRef.child("Users")
         let groupRefTable = databaseRef.child("Group")
+        let userGroupRefTable = usersRefTable.child((appUser.userFireBase?.uid)!).child("Group")
         
         storeGroupInDB(groupRefTable: groupRefTable, appUser: appUser)
         storeGeneralInformationUser(usersRefTable: usersRefTable, appUser: appUser)
         storeLocationInDB(usersRefTable: usersRefTable, appUser: appUser )
         storePhonePositionInDB(usersRefTable: usersRefTable, appUser: appUser)
-        
         storeAdressInDB(usersRefTable: usersRefTable, appUser: appUser)
-        var j = 0
-        for group in appUser.group.group
-        {
-            j += 1
-            
-            usersRefTable.child((appUser.userFireBase?.uid)!).child("Group").child(String(j)).setValue(group)
-        }
+        storeUserGroups(userGroupRef: userGroupRefTable, appUser: appUser)
         
     }
+    
     static func storeGeneralInformationUser(usersRefTable: DatabaseReference, appUser: AppUser)
     {
         usersRefTable.child((appUser.userFireBase?.uid)!).child("User State").setValue(appUser.userState.rawValue)
@@ -118,6 +113,7 @@ class FireBaseManager: NSObject
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Lastname").setValue(appUser.lastName)
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Birthdate").setValue(appUser.bithDate)
     }
+    
     static func storeAdressInDB(usersRefTable: DatabaseReference, appUser: AppUser )
     {
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Adress").child("Street").setValue(appUser.adress.street)
@@ -133,6 +129,7 @@ class FireBaseManager: NSObject
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Location").child("Latitude").setValue(appUser.location.latitude)
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Location").child("Longitude").setValue(appUser.location.longitude)
     }
+    
     static func storePhonePositionInDB(usersRefTable: DatabaseReference, appUser: AppUser )
     {
         usersRefTable.child((appUser.userFireBase?.uid)!).child("PhonePosition").child("PhonePositionX").setValue(appUser.phonePosition.xPosition)
@@ -140,24 +137,35 @@ class FireBaseManager: NSObject
         usersRefTable.child((appUser.userFireBase?.uid)!).child("PhonePosition").child("PhonePositionZ").setValue(appUser.phonePosition.zPosition)
     }
     
+    // La méthode ci-dessous stoque le user dans la table des groupe correspondant
     static func storeGroupInDB(groupRefTable: DatabaseReference, appUser: AppUser )
     {
-        
         var i = 0
         if !(appUser.group.group[0] == "")
         {
             for group in appUser.group.group
             {
-                
-               
                 i += 1
                 groupRefTable.child(group).child((appUser.userFireBase?.uid)!).setValue(appUser.email)
             }
         }
     }
     
+    // La méthode ci-dessous stoque les groupes du user dans la table de l'user
+    static func storeUserGroups(userGroupRef: DatabaseReference, appUser: AppUser)
+    {
+        var j = 0
+        if !(appUser.group.group[0] == "")
+        {
+            for group in appUser.group.group
+            {
+                j += 1
+                
+                userGroupRef.child(String(j)).setValue(group)
+            }
+        }
+    }
+    
 }
-
-
 
 

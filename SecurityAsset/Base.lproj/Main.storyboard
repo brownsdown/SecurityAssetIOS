@@ -1033,7 +1033,7 @@
         <!--tabBarRoot-->
         <scene sceneID="hcQ-b1-1cv">
             <objects>
-                <tabBarController title="tabBarRoot" id="fhd-cd-kbk" sceneMemberID="viewController">
+                <tabBarController title="tabBarRoot" id="fhd-cd-kbk" customClass="MyUITabBarController" customModule="SecurityAsset" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="L58-XJ-tHC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

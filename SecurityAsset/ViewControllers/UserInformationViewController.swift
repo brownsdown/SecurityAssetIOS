@@ -10,6 +10,13 @@ import UIKit
 
 class UserInformationViewController: UIViewController, UITableViewDataSource {
     var user: AppUser?
+    {
+        didSet
+        {
+            self.loadViewIfNeeded()
+        }
+        
+    }
     var cellTitle: [String] = ["Firstname", "Lastname","Birthdate"]
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,10 +24,12 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
-
+        let tbcv = self.tabBarController as! MyUITabBarController
+        self.user = tbcv.user
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,10 +47,10 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "informationUserCell", for: indexPath) as! UserInformationTableViewCell
         
-//        cell.itunesContent = resultItunes?[indexPath.row]
+        //        cell.itunesContent = resultItunes?[indexPath.row]
         
         
         return cell
     }
-
+    
 }

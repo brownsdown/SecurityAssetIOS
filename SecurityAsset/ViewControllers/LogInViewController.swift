@@ -59,9 +59,15 @@ class LogInViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let infoUserVC = segue.destination as? UserInformationViewController
+        if let CreateUserVC = segue.destination as? UserInformationViewController
         {
-            infoUserVC.user = self.user
+            CreateUserVC.user = self.user
+        }
+        if let myTabBarVC = segue.destination as? MyUITabBarController
+        {
+            
+            myTabBarVC.user = self.user
+            
         }
     }
     
@@ -160,8 +166,9 @@ class LogInViewController: UIViewController {
     
     func moveForward()
     {
-        if (user?.userFireBase?.isEmailVerified)!
+        if (user?.userFireBase?.isEmailVerified)! && AppUser.completion == 10
         {
+            AppUser.completion = 0
             self.performSegue(withIdentifier: "tabBarRootSegue", sender: nil)
         }
     }
