@@ -12,6 +12,7 @@
 		C8306A4F1F867C2B0060129E /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8306A4E1F867C2B0060129E /* Group.swift */; };
 		C833ACC61F8F8D9E00B19D24 /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C833ACC51F8F8D9E00B19D24 /* UserInformationViewController.swift */; };
 		C834C2F01F927FF9004FD810 /* CreateUserFormExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */; };
+		C834C2F41F928D1E004FD810 /* LogInViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */; };
 		C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */; };
 		C85A1E301F8CE6AA00D7C8D5 /* StateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D01F8528CC00F9DF92 /* StateUser.swift */; };
 		C85D7E361F83A01B001AA88A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */; };
@@ -38,6 +39,7 @@
 		C8306A4E1F867C2B0060129E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		C833ACC51F8F8D9E00B19D24 /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
 		C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserFormExtension.swift; sourceTree = "<group>"; };
+		C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewControllerExtension.swift; sourceTree = "<group>"; };
 		C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C85D7E331F839DAF001AA88A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+				C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */,
 				C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */,
 				C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */,
 				C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */,
@@ -302,6 +305,7 @@
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
 				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
 				C8D367751F90BDC30056A445 /* MyUITabBarController.swift in Sources */,
+				C834C2F41F928D1E004FD810 /* LogInViewControllerExtension.swift in Sources */,
 				C833ACC61F8F8D9E00B19D24 /* UserInformationViewController.swift in Sources */,
 				C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */,
 				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,

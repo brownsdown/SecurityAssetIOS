@@ -19,5 +19,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecurityAsset/ViewControllers/LogInViewController.swift"
+            timestampString = "529699222.931203"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "signIn()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SecurityAsset.LogInViewController.signIn() -&gt; ()"
+                  moduleName = "SecurityAsset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelmoldawski/OneDrive/Bruxelles%20Formation/Dev%20IOS_Android/IOS/Swift/Projets%20IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/LogInViewController.swift"
+                  timestampString = "529699223.116457"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "1220">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SecurityAsset.LogInViewController.signIn() -&gt; ()"
+                  moduleName = "SecurityAsset"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelmoldawski/OneDrive/Bruxelles%20Formation/Dev%20IOS_Android/IOS/Swift/Projets%20IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/LogInViewController.swift"
+                  timestampString = "529699223.121893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
