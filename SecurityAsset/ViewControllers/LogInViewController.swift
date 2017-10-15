@@ -26,6 +26,7 @@ class LogInViewController: UIViewController {
         }
     }
     
+    //MARK:- AlertActions
     var alertActionOk: UIAlertAction?
     var alertActionYes: UIAlertAction?
     var alertActionNo: UIAlertAction?
@@ -37,8 +38,6 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +55,9 @@ class LogInViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let CreateUserVC = segue.destination as? UserInformationViewController
-        {
-            CreateUserVC.user = self.user
-        }
         if let myTabBarVC = segue.destination as? MyUITabBarController
         {
-            
             myTabBarVC.user = self.user
-            
         }
     }
     
@@ -88,8 +81,6 @@ class LogInViewController: UIViewController {
             print("default")
         }
     }
-    
-    
     
     func signIn()
     {
@@ -115,7 +106,7 @@ class LogInViewController: UIViewController {
                 
                 self.logInButton.setTitle("Continue", for: UIControlState.normal)
                 self.createAccountButton.setTitle("Sign out", for: UIControlState.normal)
-                if !(self.user?.userFireBase?.isEmailVerified)!
+                if !(self.user?.userFireBase?.isEmailVerified)! 
                 {
                     self.showAlerteVCMailNotVerified()
                     self.logInButton.isEnabled = false
@@ -163,7 +154,6 @@ class LogInViewController: UIViewController {
         self.forgotPasswordButton.isHidden = false
     }
     
-    
     func moveForward()
     {
         if (user?.userFireBase?.isEmailVerified)! && AppUser.completion == 10
@@ -172,6 +162,11 @@ class LogInViewController: UIViewController {
             self.performSegue(withIdentifier: "tabBarRootSegue", sender: nil)
         }
     }
-
+    
+    func enableContinueButton()
+    {
+        self.logInButton.isEnabled = true
+    }
+    
 }
 

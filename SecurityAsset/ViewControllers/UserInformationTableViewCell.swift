@@ -9,7 +9,16 @@
 import UIKit
 
 class UserInformationTableViewCell: UITableViewCell {
-
+    var cellContent: (String,String) = ("","")
+    {
+        didSet
+        {
+            self.cellLabel.text = cellContent.0
+            self.cellTextField.text = cellContent.1
+        }
+    }
+    @IBOutlet weak var cellTextField: UITextField!
+    @IBOutlet weak var cellLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

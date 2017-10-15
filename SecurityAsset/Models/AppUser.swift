@@ -13,6 +13,7 @@ import FirebaseDatabase
 class AppUser
 {
     static var completion: Int = 0
+    
     var userState = StateUser.safe
     var group: Group = Group(group: [String]())
     var firstName: String = ""
@@ -40,13 +41,14 @@ class AppUser
                 AppUser.completion += 1
             })
             userRefTable.child("Lastname").observeSingleEvent(of:.value, with: { (snapshot) in
-                self.lastName = (snapshot.value as? String)!
+                self.lastName = (snapshot.value as? String ?? "")!
                 AppUser.completion += 1
             })
             userRefTable.child("Birthdate").observeSingleEvent(of:.value, with: { (snapshot) in
-                self.bithDate = (snapshot.value as? String)!
+                self.bithDate = (snapshot.value as? String ?? "")!
                 AppUser.completion += 1
             })
+            
             self.adressFromFireBase(userRef: userRefTable)
             self.userFireBase = fireBaseUserTest
             self.email = (userFireBase?.email)!
