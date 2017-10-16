@@ -38,10 +38,11 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        passwordTextField.text = (defaults.value(forKey: "password")) as? String
+        //        passwordTextField.text = (defaults.value(forKey: "password")) as? String
         mailTextField.text = (defaults.value(forKey: "email")) as? String
         logInButton.layer.cornerRadius = 15
         createAccountButton.layer.cornerRadius = 15
@@ -94,13 +95,20 @@ class LogInViewController: UIViewController {
         FireBaseManager.shared.login(email: email, password: password) { (success: Bool) in
             if (success)
             {
+                self.loginActivityIndicator.startAnimating()
+                self.logInButton.isEnabled = false
                 self.user = AppUser(fireBaseUser: FireBaseManager.shared.currentUser!)
+                self.user?.updateUserFromFirebase(fireBaseUser: FireBaseManager.shared.currentUser!, handler: { response in
+                    if (self.user?.userFireBase?.isEmailVerified)!
+                    {
+                        self.loginActivityIndicator.stopAnimating()
+                        self.logInButton.isEnabled = response
+                    }
+                    self.defaults.set(self.user?.email, forKey: "email")
+                    self.defaults.set(password, forKey: "password")
+                })
                 self.mailTextField.isUserInteractionEnabled = false
                 self.mailTextField.backgroundColor = UIColor.darkGray
-                
-                self.defaults.set(self.user?.email, forKey: "email")//
-                self.defaults.set(password, forKey: "password")//
-                
                 self.passwordTextField.isUserInteractionEnabled = false
                 self.passwordTextField.backgroundColor = UIColor.darkGray
                 
@@ -116,13 +124,13 @@ class LogInViewController: UIViewController {
                 self.forgotPasswordButton.isHidden = true
                 print("login successed")
             }
-//            else
-//            {
-//                print("test")
-//                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
-//
-//                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: self.alertActionOk!, alertAction2: nil)
-//            }
+            //            else
+            //            {
+            //                print("test")
+            //                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
+            //
+            //                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: self.alertActionOk!, alertAction2: nil)
+            //            }
         }
     }
     
@@ -156,9 +164,8 @@ class LogInViewController: UIViewController {
     
     func moveForward()
     {
-        if (user?.userFireBase?.isEmailVerified)! && AppUser.completion == 10
+        if (user?.userFireBase?.isEmailVerified)!
         {
-            AppUser.completion = 0
             self.performSegue(withIdentifier: "tabBarRootSegue", sender: nil)
         }
     }

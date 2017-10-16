@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-
+import SwiftyJSON
 
 class FireBaseManager: NSObject
 {
@@ -160,12 +160,72 @@ class FireBaseManager: NSObject
             for group in appUser.group.group
             {
                 j += 1
-                
-                userGroupRef.child(String(j)).setValue(group)
+                userGroupRef.child("group"+String(j)).setValue(group)
             }
         }
     }
     
+    static func getGroupFromJson(userGroup: JSON) -> Group
+    {
+        let count = userGroup.count
+        var groupToReturn: Group = Group()
+        for i in 1...count
+        {
+            groupToReturn.group.append(userGroup["group"+String(i)].string!)
+            print(userGroup["group"+String(i)].string!)
+        }
+        return groupToReturn
+    }
+    
+    static func getAdressFromJson(userAdress: JSON) -> Adress
+    {
+        let count = userAdress.count
+        var adressToReturn: Adress = Adress()
+        var adressFields = ["City","Country","Mailbox","Number","Statezip","Street"]
+       
+        for i in 0...(count-1)
+        {
+            switch i
+            {
+            case 0:
+                adressToReturn.city = userAdress[adressFields[i]].string!
+            case 1 :
+                adressToReturn.country = userAdress[adressFields[i]].string!
+            case 2 :
+                adressToReturn.mailBox = userAdress[adressFields[i]].int!
+            case 3 :
+                adressToReturn.number = userAdress[adressFields[i]].int!
+            case 4 :
+                adressToReturn.stateZip = userAdress[adressFields[i]].int!
+            case 5 :
+                adressToReturn.street = userAdress[adressFields[i]].string!
+            default:
+                print("default")
+            }
+
+        }
+        return adressToReturn
+    }
+    
+    static func getLocationFromJson(userLocation: JSON) -> Location
+    {
+        let count = userLocation.count
+        var locationToReturn: Location = Location()
+        for i in 0...(count-1)
+        {
+            switch i
+            {
+            case 0:
+                locationToReturn.latitude = userLocation["Latitude"].double!
+            case 1:
+                locationToReturn.longitude = userLocation["Longitude"].double!
+            default:
+                locationToReturn.latitude = 0.0
+                locationToReturn.longitude = 0.0
+            }
+        }
+        return locationToReturn
+    }
 }
 
 

@@ -129,6 +129,14 @@
                                     <segue destination="pjr-tI-PA0" kind="show" id="7tk-wC-OMw"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9rx-6d-cvZ">
+                                <rect key="frame" x="187" y="257" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Oac-3f-Bni"/>
+                                    <constraint firstAttribute="width" constant="40" id="VVd-Y7-t9T"/>
+                                </constraints>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -136,6 +144,7 @@
                             <constraint firstItem="b5J-kh-sGo" firstAttribute="top" secondItem="Ilo-b6-CDa" secondAttribute="bottom" constant="20" id="23e-6d-bRC"/>
                             <constraint firstItem="taR-Xk-PMK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="26f-wB-JSv"/>
                             <constraint firstItem="b5J-kh-sGo" firstAttribute="centerX" secondItem="Ilo-b6-CDa" secondAttribute="centerX" id="5le-6D-uYd"/>
+                            <constraint firstItem="9rx-6d-cvZ" firstAttribute="centerX" secondItem="Q6w-4S-HCd" secondAttribute="centerX" id="8rs-Ma-zma"/>
                             <constraint firstItem="Q6w-4S-HCd" firstAttribute="width" secondItem="Ilo-b6-CDa" secondAttribute="width" id="BgI-dh-Zxl"/>
                             <constraint firstItem="Q6w-4S-HCd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="BhN-lx-JhO"/>
                             <constraint firstItem="HnY-A9-IMN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Bm8-63-tl9"/>
@@ -150,6 +159,7 @@
                             <constraint firstItem="Ilo-b6-CDa" firstAttribute="top" secondItem="Q6w-4S-HCd" secondAttribute="bottom" constant="20" id="n1M-VW-UD9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="taR-Xk-PMK" secondAttribute="trailing" constant="16" id="sYY-m7-IeB"/>
                             <constraint firstItem="Pbo-FE-7mm" firstAttribute="top" secondItem="taR-Xk-PMK" secondAttribute="bottom" constant="20" id="udV-7E-Kp6"/>
+                            <constraint firstItem="9rx-6d-cvZ" firstAttribute="centerY" secondItem="Q6w-4S-HCd" secondAttribute="centerY" id="vSh-XO-pJf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -158,6 +168,7 @@
                         <outlet property="createAccountButton" destination="Ilo-b6-CDa" id="7gN-Ln-gr9"/>
                         <outlet property="forgotPasswordButton" destination="b5J-kh-sGo" id="581-ns-Jrb"/>
                         <outlet property="logInButton" destination="Q6w-4S-HCd" id="y3c-3m-6Si"/>
+                        <outlet property="loginActivityIndicator" destination="9rx-6d-cvZ" id="h1W-3j-BOk"/>
                         <outlet property="mailTextField" destination="taR-Xk-PMK" id="HUh-XU-y8f"/>
                         <outlet property="passwordTextField" destination="Pbo-FE-7mm" id="lHO-sQ-3w0"/>
                         <segue destination="fhd-cd-kbk" kind="show" identifier="tabBarRootSegue" id="ilz-NO-G7H"/>
