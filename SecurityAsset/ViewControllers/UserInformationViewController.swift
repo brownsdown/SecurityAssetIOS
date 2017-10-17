@@ -32,6 +32,11 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    @IBAction func returnToLogin(_ sender: Any) {
+        self.dismiss(animated: true) {}
+        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -55,6 +55,8 @@ extension CreateUserFormTableViewController
             
             self.alertVC?.dismiss(animated: true, completion: nil)
             self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+            self.dismiss(animated: true, completion: {})
+            
         }
         self.alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
         {

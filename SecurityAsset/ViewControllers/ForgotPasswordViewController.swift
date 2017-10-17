@@ -39,6 +39,9 @@ class ForgotPasswordViewController: UIViewController {
                     let alertActionOk = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
                         (_) in
                         alertVC.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: {})
+
+                        
                     }
                     
                     alertVC.addAction(alertActionOk)

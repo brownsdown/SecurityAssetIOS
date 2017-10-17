@@ -122,15 +122,10 @@ class LogInViewController: UIViewController {
                 }
                 self.forgotPasswordButton.isEnabled = false
                 self.forgotPasswordButton.isHidden = true
+                self.moveForward()
                 print("login successed")
             }
-            //            else
-            //            {
-            //                print("test")
-            //                guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
-            //
-            //                self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: self.alertActionOk!, alertAction2: nil)
-            //            }
+       
         }
     }
     
