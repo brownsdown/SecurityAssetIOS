@@ -103,10 +103,12 @@ class LogInViewController: UIViewController {
                     {
                         self.loginActivityIndicator.stopAnimating()
                         self.logInButton.isEnabled = response
+                        self.moveForward()
                     }
-                    self.defaults.set(self.user?.email, forKey: "email")
-                    self.defaults.set(password, forKey: "password")
+                    
                 })
+                self.defaults.set(self.user?.email, forKey: "email")
+                self.defaults.set(password, forKey: "password")
                 self.mailTextField.isUserInteractionEnabled = false
                 self.mailTextField.backgroundColor = UIColor.darkGray
                 self.passwordTextField.isUserInteractionEnabled = false
@@ -122,7 +124,7 @@ class LogInViewController: UIViewController {
                 }
                 self.forgotPasswordButton.isEnabled = false
                 self.forgotPasswordButton.isHidden = true
-                self.moveForward()
+                
                 print("login successed")
             }
        

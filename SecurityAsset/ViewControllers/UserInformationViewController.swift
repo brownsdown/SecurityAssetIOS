@@ -36,7 +36,6 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         self.dismiss(animated: true) {}
         self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,12 +43,13 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     
     //Mark : - TableView DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
+        var test = self.objectArray.count
         return self.objectArray.count
     }
     
     // La méthode ci-dessous est utilisée par la méthode suivante
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        var test = objectArray[section].sectionObjects.count
         return objectArray[section].sectionObjects.count
     }
     //La méthode ci-dessous est utiliser pour implémenter, et mettre à jours, la table view avec le tableau de data
@@ -61,7 +61,7 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
+        var test = objectArray[section].sectionName
         return objectArray[section].sectionName
     }
     

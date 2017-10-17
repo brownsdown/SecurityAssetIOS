@@ -80,26 +80,7 @@ class CreateUserFormTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
-    // MARK: - Table view data source
-    
-    //    override func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 3
-    //    }
-    //
-    //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        // #warning Incomplete implementation, return the number of rows
-    //        var rows: Int = 0
-    //
-    //        if section < numberOfRowsAtSection.count {
-    //            rows = numberOfRowsAtSection[section]
-    //        }
-    //
-    //        return rows
-    //    }
-    
+
     // Cette ligne sert à ne pas hilighité la ligne de la tableview
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
