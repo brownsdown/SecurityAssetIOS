@@ -43,25 +43,24 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     
     //Mark : - TableView DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        var test = self.objectArray.count
         return self.objectArray.count
     }
     
     // La méthode ci-dessous est utilisée par la méthode suivante
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var test = objectArray[section].sectionObjects.count
         return objectArray[section].sectionObjects.count
     }
     //La méthode ci-dessous est utiliser pour implémenter, et mettre à jours, la table view avec le tableau de data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "informationUserCell", for: indexPath) as! UserInformationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "informationUserCell", for: indexPath) as! TextFieldTableViewCell
         
-                cell.cellContent = (self.cellTitles[indexPath.section].sectionObjects[indexPath.row], objectArray[indexPath.section].sectionObjects[indexPath.row])
+        cell.field = self.cellTitles[indexPath.section].sectionObjects[indexPath.row]
+        cell.textField.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
+
         
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var test = objectArray[section].sectionName
         return objectArray[section].sectionName
     }
     
@@ -87,3 +86,5 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         return generalInformationArray
     }
 }
+
+

@@ -912,7 +912,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationUserCell" id="uZE-lN-w9W" customClass="UserInformationTableViewCell" customModule="SecurityAsset" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationUserCell" id="uZE-lN-w9W" customClass="TextFieldTableViewCell" customModule="SecurityAsset" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uZE-lN-w9W" id="OJC-Hu-Kud">
@@ -954,8 +954,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.9882352941176471" green="1" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="cellLabel" destination="IOO-gc-Qy5" id="b9F-Ef-RVd"/>
-                                            <outlet property="cellTextField" destination="bOw-br-bJU" id="InW-fN-VVh"/>
+                                            <outlet property="fieldLabel" destination="IOO-gc-Qy5" id="tJN-pn-naf"/>
+                                            <outlet property="textField" destination="bOw-br-bJU" id="HxZ-4b-AMX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

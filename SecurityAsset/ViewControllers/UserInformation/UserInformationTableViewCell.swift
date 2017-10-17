@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInformationTableViewCell: UITableViewCell {
+class UserInformationTableViewCell: FormFieldTableViewCell, UITextFieldDelegate {
     var cellContent: (String,String) = ("","")
     {
         didSet
@@ -22,6 +22,7 @@ class UserInformationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.cellTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
