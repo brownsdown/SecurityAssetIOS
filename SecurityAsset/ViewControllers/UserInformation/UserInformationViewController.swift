@@ -8,10 +8,12 @@
 
 import UIKit
 
-class UserInformationViewController: UIViewController, UITableViewDataSource {
+class UserInformationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FormFieldDelegate{
     var user: AppUser?
-    let attributNotIncluded = ["userState", "email", "location", "phonePosition","userFireBase"]
     
+    var formFields: [FormFieldType] = [.street, .number, .mailbox, .stateZip, .city, .country, .firstName, .lastName, .birthdate, .group]
+    var values = [String]()
+    let attributNotIncluded = ["userState", "email", "location", "phonePosition","userFireBase"]
     var objectArray = [Objects]()
     var userProperty: [String: [String]] = [:]
     var cellTitles: [Objects] = [Objects(sectionName: "Adress",sectionObjects: ["Street","Number","Mail box","State Zip","City","Country"]), Objects(sectionName: "General Information",sectionObjects: ["First name","Last name","Birthdate"]), Objects(sectionName: "Group",sectionObjects: ["group1","group2","group3","group4"])]
@@ -23,13 +25,7 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
         self.tableView.dataSource = self
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
-        let generalInformationSection = generalInformationArray(appUser: self.user!)
-        let adressArraySection = adressArray(appUser: self.user!)
-        let groupSection = groupArray(appUser: self.user!)
-        self.userProperty = ["General Information": generalInformationSection, "Adress": adressArraySection, "Group": groupSection]
-        for (key, value) in userProperty {
-            objectArray.append(Objects(sectionName: key, sectionObjects: value))
-        }
+  
     }
     
     @IBAction func returnToLogin(_ sender: Any) {
@@ -43,48 +39,48 @@ class UserInformationViewController: UIViewController, UITableViewDataSource {
     
     //Mark : - TableView DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.objectArray.count
+        return 1
     }
     
     // La méthode ci-dessous est utilisée par la méthode suivante
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objectArray[section].sectionObjects.count
+        return formFields.count
     }
     //La méthode ci-dessous est utiliser pour implémenter, et mettre à jours, la table view avec le tableau de data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "informationUserCell", for: indexPath) as! TextFieldTableViewCell
+         let field = formFields[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "informationUserCell", for: indexPath) as! FormFieldTableViewCell
         
-        cell.field = self.cellTitles[indexPath.section].sectionObjects[indexPath.row]
-        cell.textField.text = objectArray[indexPath.section].sectionObjects[indexPath.row]
-
-        
+        cell.field = field.rawValue
+        cell.delegate = self
         return cell
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return objectArray[section].sectionName
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return objectArray[section].sectionName
+//    }
+    
+
+    @IBAction func saveAction(_ sender: Any) {
+        self.view.endEditing(true)
     }
     
-    func groupArray(appUser: AppUser) -> [String]
+    func updateUserInformation(value: Any, sender: FormFieldTableViewCell)
     {
-        var groupArrayToReturn: [String]
-        groupArrayToReturn = appUser.group.group
-        
-        return groupArrayToReturn
-    }
-    
-    func adressArray (appUser: AppUser) -> [String]
-    {
-        var adressArrayToReturn: [String]
-        adressArrayToReturn = [appUser.adress.street, String(appUser.adress.number), String(appUser.adress.mailBox), String(appUser.adress.stateZip), appUser.adress.city, appUser.adress.country]
-        return adressArrayToReturn
-    }
-    
-    func generalInformationArray (appUser: AppUser) -> [String]
-    {
-        var generalInformationArray: [String]
-        generalInformationArray = [appUser.firstName, appUser.lastName, appUser.bithDate]
-        return generalInformationArray
+        //TODO
     }
 }
+
+enum FormFieldType: String{
+    case street = "Street"
+    case number = "Number"
+    case mailbox = "Mail box"
+    case stateZip = "State Zip"
+    case city = "City"
+    case country = "Country"
+    case firstName = "Firstname"
+    case lastName = "Lastname"
+    case birthdate = "Birthdate"
+    case group = "group1"
+    }
 
 

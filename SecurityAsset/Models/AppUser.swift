@@ -13,9 +13,16 @@ import SwiftyJSON
 
 class AppUser
 {
-   
     
     var userState = StateUser.safe
+    {
+        didSet
+        {
+            let usersRefTable = FireBaseManager.databaseRef.child("Users")
+            let ref = usersRefTable.child((self.userFireBase?.uid)!)
+            FireBaseManager.updateUserStatusInDB(usersRefTable: ref,appUser: self)
+        }
+    }
     var group: Group = Group(group: [String]())
     var firstName: String = ""
     var lastName: String = ""
@@ -25,6 +32,7 @@ class AppUser
     var location: Location = Location()
     var phonePosition: PhonePosition = PhonePosition()
     var userFireBase: User? = nil
+    
     
     init()
     {}
@@ -68,7 +76,11 @@ class AppUser
         self.phonePosition = phonePosition
         self.userFireBase = fireBaseUser
     }
-    
+    func resetUserPhonePosition()
+    {
+        self.location.latitude = 0.0
+        self.location.longitude = 0.0
+    }
 //    func groupFromFireBase(userRef: DatabaseReference)
 //    {
 //        var j: Int = 0

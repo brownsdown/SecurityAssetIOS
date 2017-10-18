@@ -226,6 +226,14 @@ class FireBaseManager: NSObject
         }
         return locationToReturn
     }
+    
+    static func updateUserStatusInDB(usersRefTable: DatabaseReference, appUser: AppUser)
+    {
+        let ref = usersRefTable
+        let post = ["User State": appUser.userState.rawValue]
+        ref.updateChildValues(post)
+
+    }
 }
 
 

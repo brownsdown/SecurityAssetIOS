@@ -16,11 +16,12 @@ class TextFieldTableViewCell: FormFieldTableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         self.textField.delegate = self
+
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let field = self.field else {return}
-        self.delegate?.formFieldTableViewCell(value: textField.text ?? "", sender: self)
+      self.delegate?.updateUserInformation(value: textField.text ?? "" , sender: self)
     }
 
 }

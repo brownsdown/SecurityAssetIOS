@@ -13,7 +13,6 @@ extension UserInformationViewController
      
     struct Objects
     {
-        
         var sectionName : String!
         var sectionObjects : [String]!
     }

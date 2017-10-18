@@ -23,5 +23,5 @@ class FormFieldTableViewCell: UITableViewCell {
 
 }
 protocol FormFieldDelegate: class{
-    func formFieldTableViewCell(value: Any, sender: FormFieldTableViewCell)
+    func updateUserInformation(value: Any, sender: FormFieldTableViewCell)
 }
