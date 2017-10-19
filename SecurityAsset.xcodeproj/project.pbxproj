@@ -16,6 +16,7 @@
 		C83527D01F87696400D82F0C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */; };
 		C835B54C1F965C970049E772 /* FormFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C835B54B1F965C970049E772 /* FormFieldTableViewCell.swift */; };
 		C835B54F1F969E560049E772 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C835B54E1F969E560049E772 /* TextFieldTableViewCell.swift */; };
+		C83B948A1F97F72A00B14536 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83B94891F97F72A00B14536 /* MapViewController.swift */; };
 		C83E5CC81F974AFD009812F9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83E5CC71F974AFD009812F9 /* DashboardViewController.swift */; };
 		C83E5CCA1F974CAD009812F9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C83E5CC91F974CAD009812F9 /* CoreMotion.framework */; };
 		C83E5CCD1F97733C009812F9 /* DashboardViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83E5CCC1F97733C009812F9 /* DashboardViewControllerExtension.swift */; };
@@ -30,6 +31,7 @@
 		C861094D1F8F9D3B009107C3 /* UserInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C861094C1F8F9D3B009107C3 /* UserInformationTableViewCell.swift */; };
 		C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */; };
 		C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508D1F899287007FFDAF /* DatePickerViewController.swift */; };
+		C88F34CF1F98CD2B00514D8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88F34CE1F98CD2B00514D8A /* CoreLocation.framework */; };
 		C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */; };
 		C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CD1F8528CB00F9DF92 /* AppUser.swift */; };
 		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
@@ -49,6 +51,7 @@
 		C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		C835B54B1F965C970049E772 /* FormFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldTableViewCell.swift; sourceTree = "<group>"; };
 		C835B54E1F969E560049E772 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		C83B94891F97F72A00B14536 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C83E5CC71F974AFD009812F9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		C83E5CC91F974CAD009812F9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		C83E5CCC1F97733C009812F9 /* DashboardViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		C861094C1F8F9D3B009107C3 /* UserInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationTableViewCell.swift; sourceTree = "<group>"; };
 		C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserFormTableViewController.swift; sourceTree = "<group>"; };
 		C887508D1F899287007FFDAF /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		C88F34CE1F98CD2B00514D8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C8B400CD1F8528CB00F9DF92 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		C8B400CE1F8528CB00F9DF92 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C88F34CF1F98CD2B00514D8A /* CoreLocation.framework in Frameworks */,
 				C83E5CCA1F974CAD009812F9 /* CoreMotion.framework in Frameworks */,
 				3140170EAB02B91C543C63A7 /* Pods_SecurityAsset.framework in Frameworks */,
 			);
@@ -90,6 +95,7 @@
 		6E86E0BC13E85DB192171690 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C88F34CE1F98CD2B00514D8A /* CoreLocation.framework */,
 				C83E5CC91F974CAD009812F9 /* CoreMotion.framework */,
 				741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */,
 			);
@@ -186,6 +192,7 @@
 				C835B54D1F9674070049E772 /* UserInformation */,
 				C8D367741F90BDC30056A445 /* MyUITabBarController.swift */,
 				C83E5CCB1F9772FF009812F9 /* Dashboard */,
+				C83B94891F97F72A00B14536 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -343,6 +350,7 @@
 				C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */,
 				C85D4D3C1F937CE60075890D /* UserInformationViewControllerExtension.swift in Sources */,
 				C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */,
+				C83B948A1F97F72A00B14536 /* MapViewController.swift in Sources */,
 				C8D367751F90BDC30056A445 /* MyUITabBarController.swift in Sources */,
 				C835B54C1F965C970049E772 /* FormFieldTableViewCell.swift in Sources */,
 				C834C2F41F928D1E004FD810 /* LogInViewControllerExtension.swift in Sources */,

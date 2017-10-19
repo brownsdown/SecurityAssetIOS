@@ -48,7 +48,10 @@ class DashboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.updateUserStatusLabel()
-        self.accelerometerActivation()
+        if dashboardSwitch.isOn
+        {
+            self.accelerometerActivation()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +60,7 @@ class DashboardViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.accelerometerDeactivation()
+//        self.accelerometerDeactivation()
     }
     
 }

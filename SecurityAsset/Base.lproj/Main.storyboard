@@ -1125,6 +1125,46 @@
             </objects>
             <point key="canvasLocation" x="2995.6521739130435" y="-802.17391304347836"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="7yN-rz-Nhi">
+            <objects>
+                <viewController id="v40-pg-QOg" customClass="MapViewController" customModule="SecurityAsset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bnc-PZ-a6T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="69Z-yA-1OJ">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Y-NR-6gW">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yeH-ZY-LDr" firstAttribute="bottom" secondItem="Q1Y-NR-6gW" secondAttribute="bottom" id="22D-eE-faz"/>
+                            <constraint firstItem="69Z-yA-1OJ" firstAttribute="top" secondItem="yeH-ZY-LDr" secondAttribute="top" id="BBG-S4-HuF"/>
+                            <constraint firstItem="69Z-yA-1OJ" firstAttribute="centerX" secondItem="Bnc-PZ-a6T" secondAttribute="centerX" id="KgE-Sx-ouf"/>
+                            <constraint firstItem="69Z-yA-1OJ" firstAttribute="leading" secondItem="yeH-ZY-LDr" secondAttribute="leading" id="Kzc-hg-AQX"/>
+                            <constraint firstItem="yeH-ZY-LDr" firstAttribute="bottom" secondItem="69Z-yA-1OJ" secondAttribute="bottom" id="NHl-Ud-zK0"/>
+                            <constraint firstItem="Q1Y-NR-6gW" firstAttribute="top" secondItem="yeH-ZY-LDr" secondAttribute="top" id="PHY-C2-sdw"/>
+                            <constraint firstItem="Q1Y-NR-6gW" firstAttribute="leading" secondItem="yeH-ZY-LDr" secondAttribute="leading" id="TsY-h3-kna"/>
+                            <constraint firstItem="yeH-ZY-LDr" firstAttribute="trailing" secondItem="69Z-yA-1OJ" secondAttribute="trailing" id="UfE-hV-Zjt"/>
+                            <constraint firstItem="yeH-ZY-LDr" firstAttribute="trailing" secondItem="Q1Y-NR-6gW" secondAttribute="trailing" id="Ypt-JS-zft"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yeH-ZY-LDr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="uRt-5f-V5t">
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="gfG-0J-D37"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="Q1Y-NR-6gW" id="2GD-9z-3HW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acK-wy-hRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3302.898550724638" y="-95.380434782608702"/>
+        </scene>
         <!--tabBarRoot-->
         <scene sceneID="hcQ-b1-1cv">
             <objects>
@@ -1137,6 +1177,7 @@
                     <connections>
                         <segue destination="9YZ-cZ-1JO" kind="relationship" relationship="viewControllers" id="gRg-p5-wiA"/>
                         <segue destination="wS0-Rf-iYd" kind="relationship" relationship="viewControllers" id="uwU-ie-wQX"/>
+                        <segue destination="ImO-DV-TSs" kind="relationship" relationship="viewControllers" id="tgy-4v-ddX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nNw-Bs-7zV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1180,6 +1221,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOX-pp-xzo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2228" y="664"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="31r-pi-R87">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ImO-DV-TSs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="HOu-b8-JBO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IQC-CZ-fX3">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v40-pg-QOg" kind="relationship" relationship="rootViewController" id="ttI-TS-YVI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Txf-pB-wBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="-95"/>
         </scene>
     </scenes>
     <resources>

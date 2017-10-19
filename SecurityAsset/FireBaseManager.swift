@@ -234,6 +234,13 @@ class FireBaseManager: NSObject
         ref.updateChildValues(post)
 
     }
+    static func updateUserLocationInDB (usersRefTable: DatabaseReference, appUser: AppUser)
+    {
+        let ref = usersRefTable.child("Location")
+        let post = ["Latitude": appUser.location.latitude, "Longitude": appUser.location.longitude]
+        ref.updateChildValues(post)
+    }
+    
 }
 
 

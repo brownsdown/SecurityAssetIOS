@@ -30,6 +30,14 @@ class AppUser
     var adress: Adress = Adress()
     var bithDate: String = ""
     var location: Location = Location()
+    {
+        didSet
+        {
+            let usersRefTable = FireBaseManager.databaseRef.child("Users")
+            let ref = usersRefTable.child((self.userFireBase?.uid)!)
+            FireBaseManager.updateUserLocationInDB(usersRefTable: ref, appUser: self)
+        }
+    }
     var phonePosition: PhonePosition = PhonePosition()
     var userFireBase: User? = nil
     
