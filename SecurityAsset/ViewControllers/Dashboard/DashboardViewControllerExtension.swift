@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-extension DashboardViewController
+import CoreLocation
+extension DashboardViewController: CLLocationManagerDelegate
 {
     func startTimer ()
     {
@@ -17,6 +18,7 @@ extension DashboardViewController
             print("Timer")
             self.user?.userState = StateUser.unsafe
             self.updateUserStatusLabel()
+            self.locationManager.startUpdatingLocation()
         })
     }
     
@@ -77,9 +79,21 @@ extension DashboardViewController
         }
         
     }
+    
     func accelerometerDeactivation()
     {
         motionManager.stopAccelerometerUpdates()
         self.user?.userState = StateUser.safe
     }
+    
+    //MARK:- CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        self.user?.location.latitude = myLocation.latitude
+        self.user?.location.longitude = myLocation.longitude
+        locationManager.stopUpdatingLocation()
+        
+    }
+    
 }

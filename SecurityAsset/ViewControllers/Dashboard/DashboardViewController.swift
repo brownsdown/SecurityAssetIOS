@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
 class DashboardViewController: UIViewController {
     var user: AppUser?
     var motionManager = CMMotionManager()
     var timer: Timer?
-    
+    let locationManager = CLLocationManager()
     @IBOutlet weak var userStatusLabel: UILabel!
     @IBOutlet weak var xPositionLabel: UILabel!
     @IBOutlet weak var yPositionLabel: UILabel!
@@ -28,6 +29,7 @@ class DashboardViewController: UIViewController {
         }
         else
         {
+            self.timer?.invalidate()
             self.accelerometerDeactivation()
             self.updateUserStatusLabel()
             self.xPositionLabel.text = "Sensor deactivated"
@@ -42,6 +44,7 @@ class DashboardViewController: UIViewController {
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
         self.user?.resetUserPhonePosition()
+        self.locationManager.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -52,6 +55,7 @@ class DashboardViewController: UIViewController {
         {
             self.accelerometerActivation()
         }
+        locationManager.startUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,5 +66,7 @@ class DashboardViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
 //        self.accelerometerDeactivation()
     }
+    
+   
     
 }
