@@ -9,31 +9,65 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseDatabase
+import FirebaseAuth
+import SwiftyJSON
 
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController
+{
     var user: AppUser?
     let locationManager = CLLocationManager()
     @IBOutlet weak var map: MKMapView!
     var userFriends: [AppUser]?
+    var tempUser: AppUser?
     
-    //test
-    let coordinate = CLLocationCoordinate2D(latitude: 50.85186, longitude: 4.30618)
-    let regionDistance: CLLocationDistance = 1000
-    
-    //test
-
+    var dbRef = FireBaseManager.databaseRef
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
+        self.userAnnotation(user: self.user)
+        
+        
+        
+        self.searchUserInGroup()
+        
+        for annotation in self.map.annotations
+        {
+            map.selectAnnotation(annotation, animated: false)
+        }
+        
         map.delegate = self
+        map.showsScale = true
+        map.showsTraffic = true
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        // MARK: - Request authorisation from the user for the foreground
+        //       locationManager.requestWhenInUseAuthorization()
+        // MARK: - Request authorisation from the user for the background
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func userAnnotation(user: AppUser?)
+    {
         let annotation = MyPointAnnotation()
-        annotation.coordinate = self.coordinate
+        let user = user!
+        annotation.coordinate = CLLocationCoordinate2D(latitude: user.location.latitude, longitude: user.location.longitude)
         annotation.title = self.user?.firstName
         annotation.subtitle = self.user?.userState.rawValue
         if annotation.subtitle == "Safe"
@@ -44,33 +78,39 @@ class MapViewController: UIViewController {
         {
             annotation.pinTintColor = UIColor.red
         }
-        
-        
         map.addAnnotation(annotation)
-        map.showsScale = true
-        map.showsTraffic = true
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        // MARK: - Request authorisation from the user for the foreground
-        //       locationManager.requestWhenInUseAuthorization()
-        // MARK: - Request authorisation from the user for the background
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        //        print("latitude: \(locationManager.location?.coordinate.latitude) longitude:\(locationManager.location?.coordinate.latitude))")
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Cette fonction permet d'ouvrire maps en appuiyant sur le point
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-                  self.mapItem().openInMaps(launchOptions: nil)
-
+    func searchUserInGroup()
+    {
+        //        var UserFirebaseID = self.user?.userFireBase?.uid
+        var usersArray = [AppUser?]()
+        
+        let groupToTrack =  (self.user?.group.group[0])!
+        
+        let groupUserRef = self.dbRef.child("Group").child(groupToTrack)
+        groupUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let value = snapshot.value
+            {
+                
+                let json = JSON(value)
+                for (key,value) in json
+                {
+                    if key != FireBaseManager.shared.currentUser?.uid
+                    {
+                        let userTemp: AppUser = AppUser(fireBaseUser: key)!
+                        userTemp.updateUserFromDBwithUID(uid: key, handler: { value in
+                            usersArray.append(userTemp)
+                   
+                        })
+                    }
+                }
+            }
+        })
+   
     }
 }
-
-class MyPointAnnotation : MKPointAnnotation {
+class MyPointAnnotation : MKPointAnnotation
+{
     var pinTintColor: UIColor?
 }

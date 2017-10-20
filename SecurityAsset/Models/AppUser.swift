@@ -19,8 +19,13 @@ class AppUser
         didSet
         {
             let usersRefTable = FireBaseManager.databaseRef.child("Users")
-            let ref = usersRefTable.child((self.userFireBase?.uid)!)
-            FireBaseManager.updateUserStatusInDB(usersRefTable: ref,appUser: self)
+            
+//            Si nous n'avont pas de userFireBase dans notre AppUser, il ne rentre pas ds la boucle pour stoquer le statut du user
+            if self.userFireBase?.uid != nil
+            {
+                let ref = usersRefTable.child((self.userFireBase?.uid)!)
+                FireBaseManager.updateUserStatusInDB(usersRefTable: ref,appUser: self)
+            }
         }
     }
     var group: Group = Group(group: [String]())
@@ -34,8 +39,8 @@ class AppUser
         didSet
         {
             let usersRefTable = FireBaseManager.databaseRef.child("Users")
-            let ref = usersRefTable.child((self.userFireBase?.uid)!)
-            FireBaseManager.updateUserLocationInDB(usersRefTable: ref, appUser: self)
+                        let ref = usersRefTable.child((FireBaseManager.shared.currentUser?.uid)!)
+                        FireBaseManager.updateUserLocationInDB(usersRefTable: ref, appUser: self)
         }
     }
     var phonePosition: PhonePosition = PhonePosition()
@@ -50,12 +55,26 @@ class AppUser
     {
         if let fireBaseUserTest = fireBaseUser
         {
+            
             self.userFireBase = fireBaseUserTest
             self.email = (userFireBase?.email)!
         }
         else{
             return nil
         }
+    }
+    
+    init?(fireBaseUser: String?)
+    {
+        if fireBaseUser != ""
+        {
+        
+        }
+        else
+        {
+            return
+        }
+        
     }
     
     init(userState: StateUser, group: Group,firstName: String, lastName: String, email: String, adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition)
@@ -89,20 +108,20 @@ class AppUser
         self.location.latitude = 0.0
         self.location.longitude = 0.0
     }
-//    func groupFromFireBase(userRef: DatabaseReference)
-//    {
-//        var j: Int = 0
-//        let userGroupRef = userRef.child("Group")
-//        userGroupRef.observeSingleEvent(of:.value, with: { (snapshot) in
-//
-//            for _ in 0 ..< snapshot.childrenCount
-//            {
-//                j += 1
-//                self.group.group.append((snapshot.childSnapshot(forPath: String(j)).value as? String ?? "")!)
-//            }
-//
-//        })
-//    }
+    //    func groupFromFireBase(userRef: DatabaseReference)
+    //    {
+    //        var j: Int = 0
+    //        let userGroupRef = userRef.child("Group")
+    //        userGroupRef.observeSingleEvent(of:.value, with: { (snapshot) in
+    //
+    //            for _ in 0 ..< snapshot.childrenCount
+    //            {
+    //                j += 1
+    //                self.group.group.append((snapshot.childSnapshot(forPath: String(j)).value as? String ?? "")!)
+    //            }
+    //
+    //        })
+    //    }
     
     
     func updateUserFromFirebase(fireBaseUser: User?, handler: @escaping (Bool) -> Void)
@@ -131,6 +150,40 @@ class AppUser
             }
         })
     }
-    
+    //Fonction utilisée pour récupérer les données importantes des autres utilisateurs
+    func updateUserFromDBwithUID(uid: String, handler: @escaping (Bool) -> Void)
+    {
+        let usersRefTable = Database.database().reference().child("Users")
+        let userRefTable = usersRefTable.child(uid)
+        userRefTable.observeSingleEvent(of:.value, with:
+            { (snapshot) in
+                if let value = snapshot.value
+                {
+                    let response = true
+                    let json = JSON(value)
+                    print(json)
+                    guard let userFistName = json["Firstname"].string, let userLastName = json["Lastname"].string, let userBirthdate = json["Birthdate"].string, let email = json["Email"].string else {return}
+                    self.firstName = userFistName
+                    self.lastName = userLastName
+                    self.email = email
+                    self.bithDate = userBirthdate
+                    let userLocation = json["Location"]
+                    self.location = FireBaseManager.getLocationFromJson(userLocation: userLocation)
+                    let userGroup = json["Group"]
+                    self.group = FireBaseManager.getGroupFromJson(userGroup: userGroup)
+                    let userAdress = json["Adress"]
+                    self.adress = FireBaseManager.getAdressFromJson(userAdress: userAdress)
+                    
+                    if json["User State"].string == "Safe"
+                    {
+                        self.userState = StateUser.safe
+                    }
+                    else
+                    {
+                        self.userState = StateUser.unsafe
+                    }
+                    handler(response)
+                }
+        })
+    }
 }
-

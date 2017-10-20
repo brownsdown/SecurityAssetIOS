@@ -37,6 +37,12 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
         mapItem.name = title
         return mapItem
     }
+    // Cette fonction permet d'ouvrire maps en appuiyant sur le point
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        self.mapItem().openInMaps(launchOptions: nil)
+        
+    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKPinAnnotationView
@@ -50,7 +56,7 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
         if let annotation = annotation as? MyPointAnnotation {
             annotationView?.pinTintColor = annotation.pinTintColor
         }
-        
+        annotationView?.canShowCallout = true
         return annotationView
     }
 }
