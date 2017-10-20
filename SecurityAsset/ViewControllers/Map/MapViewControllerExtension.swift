@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
 {
-     //MARK:- CLLocationManagerDelegate
+    //MARK:- CLLocationManagerDelegate
     // Cette fonction est appellé à chaque fois que le user se déplace
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
@@ -30,17 +30,22 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
     
     //MARK:- MKMapViewDelegate
     // cette fonction permet de retourner un objet de type MKmaps qui ouvrent la navigation dans maps
-    func mapItem() -> MKMapItem {
+    func mapItem(myAnnotation: MKAnnotationView) -> MKMapItem {
+        let latitude = myAnnotation.annotation?.coordinate.latitude
+        let longitude = myAnnotation.annotation?.coordinate.longitude
         
-        let placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: (self.user?.location.latitude)!, longitude: (self.user?.location.longitude)!))
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = title
-        return mapItem
+        
+        let placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!))
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = myAnnotation.annotation?.title!
+        
+            return mapItem
+        
     }
     // Cette fonction permet d'ouvrire maps en appuiyant sur le point
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        self.mapItem().openInMaps(launchOptions: nil)
+        self.mapItem(myAnnotation: view).openInMaps(launchOptions: nil)
         
     }
     
@@ -59,4 +64,6 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
         annotationView?.canShowCallout = true
         return annotationView
     }
+    
+    
 }

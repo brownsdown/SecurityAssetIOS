@@ -38,6 +38,14 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    @IBAction func returnToLogin(_ sender: Any) {
+        self.accelerometerDeactivation()
+        self.timer?.invalidate()
+        self.dismiss(animated: true) {}
+        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +66,19 @@ class DashboardViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        self.accelerometerDeactivation()
+        //        self.accelerometerDeactivation()
     }
     
-   
+    
     
 }

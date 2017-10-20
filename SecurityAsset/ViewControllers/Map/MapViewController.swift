@@ -19,12 +19,21 @@ class MapViewController: UIViewController
     var user: AppUser?
     let locationManager = CLLocationManager()
     @IBOutlet weak var map: MKMapView!
-    var userFriends: [AppUser]?
+    var userFriends =  [AppUser] ()
+
+    
+    
+    
+    
     var tempUser: AppUser?
     
     var dbRef = FireBaseManager.databaseRef
     
     
+    @IBAction func logInButton(_ sender: Any) {
+        self.dismiss(animated: true) {}
+        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,17 +42,9 @@ class MapViewController: UIViewController
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
         self.userAnnotation(user: self.user)
-        
-        
-        
         self.searchUserInGroup()
         
-        for annotation in self.map.annotations
-        {
-            map.selectAnnotation(annotation, animated: false)
-        }
         
-        map.delegate = self
         map.showsScale = true
         map.showsTraffic = true
         
@@ -54,7 +55,7 @@ class MapViewController: UIViewController
         // MARK: - Request authorisation from the user for the background
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,10 +67,11 @@ class MapViewController: UIViewController
     func userAnnotation(user: AppUser?)
     {
         let annotation = MyPointAnnotation()
-        let user = user!
-        annotation.coordinate = CLLocationCoordinate2D(latitude: user.location.latitude, longitude: user.location.longitude)
-        annotation.title = self.user?.firstName
-        annotation.subtitle = self.user?.userState.rawValue
+        annotation.user = user!
+        annotation.coordinate = CLLocationCoordinate2D(latitude: (user?.location.latitude)!, longitude: (user?.location.longitude)!)
+        annotation.title = user?.firstName
+        annotation.subtitle = user?.userState.rawValue
+       
         if annotation.subtitle == "Safe"
         {
             annotation.pinTintColor = UIColor.green
@@ -78,13 +80,15 @@ class MapViewController: UIViewController
         {
             annotation.pinTintColor = UIColor.red
         }
+        
+        
         map.addAnnotation(annotation)
     }
     
     func searchUserInGroup()
     {
         //        var UserFirebaseID = self.user?.userFireBase?.uid
-        var usersArray = [AppUser?]()
+
         
         let groupToTrack =  (self.user?.group.group[0])!
         
@@ -92,25 +96,34 @@ class MapViewController: UIViewController
         groupUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value
             {
-                
                 let json = JSON(value)
-                for (key,value) in json
+                for (key,_) in json
                 {
                     if key != FireBaseManager.shared.currentUser?.uid
                     {
                         let userTemp: AppUser = AppUser(fireBaseUser: key)!
                         userTemp.updateUserFromDBwithUID(uid: key, handler: { value in
-                            usersArray.append(userTemp)
-                   
+                           self.userFriends.append(userTemp)
+                            self.userAnnotation(user: userTemp)
+                            
+                            
                         })
                     }
                 }
             }
+            
+            let annotations = self.map.annotations
+            for annotation in annotations
+            {
+            self.map.selectAnnotation(annotation, animated: true)
+            }
+            self.map.delegate = self
         })
-   
+        
     }
 }
 class MyPointAnnotation : MKPointAnnotation
 {
+    var user = AppUser()
     var pinTintColor: UIColor?
 }

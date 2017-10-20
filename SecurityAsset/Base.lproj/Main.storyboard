@@ -157,7 +157,7 @@
                         <outlet property="loginActivityIndicator" destination="9rx-6d-cvZ" id="h1W-3j-BOk"/>
                         <outlet property="mailTextField" destination="taR-Xk-PMK" id="HUh-XU-y8f"/>
                         <outlet property="passwordTextField" destination="Pbo-FE-7mm" id="lHO-sQ-3w0"/>
-                        <segue destination="fhd-cd-kbk" kind="show" identifier="tabBarRootSegue" id="ilz-NO-G7H"/>
+                        <segue destination="fhd-cd-kbk" kind="modal" identifier="tabBarRootSegue" id="ilz-NO-G7H"/>
                         <segue destination="ANt-S3-w8k" kind="show" identifier="goToCreateUser" id="qOo-Py-c3s"/>
                     </connections>
                 </viewController>
@@ -1108,7 +1108,11 @@
                         <viewLayoutGuide key="safeArea" id="lx0-jb-zAm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="qDk-7x-fW3">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="Ujn-Ui-G2Y"/>
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="Ujn-Ui-G2Y">
+                            <connections>
+                                <action selector="returnToLogin:" destination="e2O-Z4-m6f" id="isd-dH-hBU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dashboardSwitch" destination="qi1-CF-goV" id="GhD-oa-tau"/>
@@ -1154,13 +1158,19 @@
                         <viewLayoutGuide key="safeArea" id="yeH-ZY-LDr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="uRt-5f-V5t">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="gfG-0J-D37"/>
+                        <barButtonItem key="leftBarButtonItem" title="Login" id="gfG-0J-D37">
+                            <connections>
+                                <action selector="logInButton:" destination="v40-pg-QOg" id="AmI-fP-qJm"/>
+                                <segue destination="eLh-ZE-xfA" kind="unwind" unwindAction="myUnwindLoginFormWithUnwindSegue:" id="CYM-Tr-kPf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="map" destination="Q1Y-NR-6gW" id="2GD-9z-3HW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acK-wy-hRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eLh-ZE-xfA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3302.898550724638" y="-95.380434782608702"/>
         </scene>
