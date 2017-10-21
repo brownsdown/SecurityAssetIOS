@@ -20,30 +20,45 @@ class MapViewController: UIViewController
     let locationManager = CLLocationManager()
     @IBOutlet weak var map: MKMapView!
     var userFriends =  [AppUser] ()
-
-    
-    
-    
-    
     var tempUser: AppUser?
-    
     var dbRef = FireBaseManager.databaseRef
+    var annotationForAuxiliaryView: MKAnnotationView?
     
     
     @IBAction func logInButton(_ sender: Any) {
         self.dismiss(animated: true) {}
         self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
     }
+    @IBOutlet weak var auxiliaryView: UIView!
+    
+    
+    @IBOutlet weak var firstnameAuxiliaryVewLabel: UILabel!
+    @IBOutlet weak var LastnameAuxiliaryViewLabel: UILabel!
+    @IBOutlet weak var UserStatusAuxiliaryViewLabel: UILabel!
+    
+      @IBOutlet weak var goButton: UIButton!
+    @IBAction func closeAuxiliaryView(_ sender: Any) {
+        self.auxiliaryView.isHidden = true
+//        self.goButton.isEnabled = false
+    }
+    
+    @IBAction func goToMaps(_ sender: Any) {
+        self.mapItem(myAnnotation: self.annotationForAuxiliaryView!).openInMaps(launchOptions: nil)
+    }
+    
+    
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.annotationForAuxiliaryView = MKAnnotationView()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
         self.userAnnotation(user: self.user)
         self.searchUserInGroup()
-        
+
         
         map.showsScale = true
         map.showsTraffic = true

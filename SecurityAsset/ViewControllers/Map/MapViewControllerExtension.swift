@@ -45,7 +45,14 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
     // Cette fonction permet d'ouvrire maps en appuiyant sur le point
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        self.mapItem(myAnnotation: view).openInMaps(launchOptions: nil)
+        
+        self.annotationForAuxiliaryView = view
+        self.auxiliaryView.isHidden = false
+        let test = view.annotation as! MyPointAnnotation
+        self.firstnameAuxiliaryVewLabel.text = test.user.firstName
+        self.LastnameAuxiliaryViewLabel.text = test.user.lastName
+        self.UserStatusAuxiliaryViewLabel.text = test.user.userState.rawValue
+//      self.mapItem(myAnnotation: view).openInMaps(launchOptions: nil)
         
     }
     
