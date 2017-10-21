@@ -155,6 +155,7 @@ class MapViewController: UIViewController
                         }
                         i = 0
                         
+                        print(newTempUser)
                     self.updateUserOnMap()
                     
                     })
