@@ -41,6 +41,7 @@ class AppUser
             let usersRefTable = FireBaseManager.databaseRef.child("Users")
                         let ref = usersRefTable.child((FireBaseManager.shared.currentUser?.uid)!)
                         FireBaseManager.updateUserLocationInDB(usersRefTable: ref, appUser: self)
+
         }
     }
     var phonePosition: PhonePosition = PhonePosition()
@@ -108,20 +109,7 @@ class AppUser
         self.location.latitude = 0.0
         self.location.longitude = 0.0
     }
-    //    func groupFromFireBase(userRef: DatabaseReference)
-    //    {
-    //        var j: Int = 0
-    //        let userGroupRef = userRef.child("Group")
-    //        userGroupRef.observeSingleEvent(of:.value, with: { (snapshot) in
-    //
-    //            for _ in 0 ..< snapshot.childrenCount
-    //            {
-    //                j += 1
-    //                self.group.group.append((snapshot.childSnapshot(forPath: String(j)).value as? String ?? "")!)
-    //            }
-    //
-    //        })
-    //    }
+    
     
     
     func updateUserFromFirebase(fireBaseUser: User?, handler: @escaping (Bool) -> Void)

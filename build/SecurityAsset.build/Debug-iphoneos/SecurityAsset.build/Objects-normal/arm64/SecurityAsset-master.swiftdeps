@@ -1,6 +1,6 @@
 version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
 options: "f51c12e26ad11e595587528e22c89a29"
-build_time: [1508588528, 486204000]
+build_time: [1508599876, 940915000]
 inputs:
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/ForgotPasswordViewController.swift": [1508234427, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Dashboard/DashboardViewController.swift": [1508522216, 0]
@@ -8,11 +8,11 @@ inputs:
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Map/MapViewControllerExtension.swift": [1508588454, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/Group.swift": [1508150002, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/Location.swift": [1508185301, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1508422655, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/FireBaseManager.swift": [1508594663, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/LogInViewController.swift": [1508240969, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/UserInformation/UserInformationViewControllerExtension.swift": [1508276649, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/AppUser.swift": [1508511353, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Map/MapViewController.swift": [1508588527, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/AppUser.swift": [1508599085, 0]
+  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Map/MapViewController.swift": [1508599876, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/MyUITabBarController.swift": [1507985133, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/UserInformation/FormFieldTableViewCell.swift": [1508490140, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/LogInViewControllerExtension.swift": [1508006014, 0]
@@ -22,7 +22,6 @@ inputs:
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Dashboard/DashboardViewControllerExtension.swift": [1508446915, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/CreateUserFormTableViewController.swift": [1508247520, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/LocationManagerExtension.swift": [1508444181, 0]
-  "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/Map/MapPin.swift": [1508527662, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/CreateUserFormExtension.swift": [1508234700, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/ViewControllers/UserInformation/UserInformationTableViewCell.swift": [1508271278, 0]
   "/Users/michaelmoldawski/OneDrive/Bruxelles Formation/Dev IOS_Android/IOS/Swift/Projets IOS/SecurityAsset/SecurityAsset/SecurityAsset/Models/Adresse.swift": [1507388782, 0]

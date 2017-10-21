@@ -146,7 +146,9 @@ class FireBaseManager: NSObject
             for group in appUser.group.group
             {
                 i += 1
-                groupRefTable.child(group).child((appUser.userFireBase?.uid)!).setValue(appUser.email)
+                groupRefTable.child(group).child((appUser.userFireBase?.uid)!).child("Location").child("Latitude").setValue(appUser.location.latitude)
+                groupRefTable.child(group).child((appUser.userFireBase?.uid)!).child("Location").child("Longitude").setValue(appUser.location.longitude)
+                groupRefTable.child(group).child((appUser.userFireBase?.uid)!).child("User State").setValue(appUser.userState.rawValue)
             }
         }
     }
@@ -182,7 +184,7 @@ class FireBaseManager: NSObject
         let count = userAdress.count
         var adressToReturn: Adress = Adress()
         var adressFields = ["City","Country","Mailbox","Number","Statezip","Street"]
-       
+        
         for i in 0...(count-1)
         {
             switch i
@@ -202,7 +204,7 @@ class FireBaseManager: NSObject
             default:
                 print("default")
             }
-
+            
         }
         return adressToReturn
     }
@@ -232,13 +234,25 @@ class FireBaseManager: NSObject
         let ref = usersRefTable
         let post = ["User State": appUser.userState.rawValue]
         ref.updateChildValues(post)
-
+        
+        for group in appUser.group.group
+        {
+            let groupRefTable = databaseRef.child("Group").child(group).child((appUser.userFireBase?.uid)!)
+            groupRefTable.updateChildValues(post)
+        }
+        
     }
     static func updateUserLocationInDB (usersRefTable: DatabaseReference, appUser: AppUser)
     {
         let ref = usersRefTable.child("Location")
         let post = ["Latitude": appUser.location.latitude, "Longitude": appUser.location.longitude]
         ref.updateChildValues(post)
+        
+        for group in appUser.group.group
+        {
+            let groupRefTable = databaseRef.child("Group").child(group).child((appUser.userFireBase?.uid)!).child("Location")
+            groupRefTable.updateChildValues(post)
+        }
     }
     
 }

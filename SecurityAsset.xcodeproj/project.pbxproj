@@ -39,7 +39,6 @@
 		C8B400D31F8528CC00F9DF92 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CE1F8528CB00F9DF92 /* Location.swift */; };
 		C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */; };
 		C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400D11F8528CC00F9DF92 /* Adresse.swift */; };
-		C8B617231F9A8584001FF69E /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B617221F9A8584001FF69E /* MapPin.swift */; };
 		C8D367751F90BDC30056A445 /* MyUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D367741F90BDC30056A445 /* MyUITabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 		C8B400CF1F8528CC00F9DF92 /* PhonePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePosition.swift; sourceTree = "<group>"; };
 		C8B400D01F8528CC00F9DF92 /* StateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUser.swift; sourceTree = "<group>"; };
 		C8B400D11F8528CC00F9DF92 /* Adresse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adresse.swift; sourceTree = "<group>"; };
-		C8B617221F9A8584001FF69E /* MapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		C8D367741F90BDC30056A445 /* MyUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITabBarController.swift; sourceTree = "<group>"; };
 		E0EFEB562CD03FD513E8BDCB /* Pods-SecurityAsset.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecurityAsset.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecurityAsset/Pods-SecurityAsset.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				C83B94891F97F72A00B14536 /* MapViewController.swift */,
-				C8B617221F9A8584001FF69E /* MapPin.swift */,
 				C88F34D21F99475600514D8A /* MapViewControllerExtension.swift */,
 			);
 			path = Map;
@@ -378,7 +375,6 @@
 				C83E5CCD1F97733C009812F9 /* DashboardViewControllerExtension.swift in Sources */,
 				C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */,
 				C88F34D11F993CC200514D8A /* LocationManagerExtension.swift in Sources */,
-				C8B617231F9A8584001FF69E /* MapPin.swift in Sources */,
 				C834C2F01F927FF9004FD810 /* CreateUserFormExtension.swift in Sources */,
 				C861094D1F8F9D3B009107C3 /* UserInformationTableViewCell.swift in Sources */,
 				C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */,
