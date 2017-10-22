@@ -151,7 +151,7 @@ class MapViewController: UIViewController
                             {
                                 self.userFriends[i] = newTempUser!
                             }
-                           i = i+1
+                           i += 1
                         }
                         i = 0
                         

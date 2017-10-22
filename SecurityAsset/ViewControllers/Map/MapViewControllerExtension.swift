@@ -29,7 +29,7 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
     }
     
     //MARK:- MKMapViewDelegate
-    // cette fonction permet de retourner un objet de type MKmaps qui ouvrent la navigation dans maps
+    // cette fonction transforme une annotation en type MKmaps qui ouvrent la navigation dans maps
     func mapItem(myAnnotation: MKAnnotationView) -> MKMapItem {
         let latitude = myAnnotation.annotation?.coordinate.latitude
         let longitude = myAnnotation.annotation?.coordinate.longitude
@@ -42,10 +42,8 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
             return mapItem
         
     }
-    // Cette fonction permet d'ouvrire maps en appuiyant sur le point
+    // Cette fonction permet de créer une fenettres d'information lorsqu'on clique sur une annotation point, et sauve l'information dans "annotationForAuxiliaryView"
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        
         self.annotationForAuxiliaryView = view
         self.auxiliaryView.isHidden = false
         let test = view.annotation as! MyPointAnnotation

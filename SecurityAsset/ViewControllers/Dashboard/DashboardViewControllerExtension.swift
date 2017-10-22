@@ -92,8 +92,21 @@ extension DashboardViewController: CLLocationManagerDelegate
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         self.user?.location.latitude = myLocation.latitude
         self.user?.location.longitude = myLocation.longitude
-        locationManager.stopUpdatingLocation()
-        
+        var i = 0
+        print("background\(i)")
+        i += 1
+        //        locationManager.stopUpdatingLocation()
+        if UIApplication.shared.applicationState == .background {
+            if dashboardSwitch.isOn
+            {
+                self.accelerometerActivation()
+            }
+            else
+            {
+                self.accelerometerDeactivation()
+            }
+            
+            
+        }
     }
-    
 }

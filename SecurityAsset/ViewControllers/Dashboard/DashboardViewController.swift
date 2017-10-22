@@ -53,6 +53,7 @@ class DashboardViewController: UIViewController {
         self.user = tbcv.user
         self.user?.resetUserPhonePosition()
         self.locationManager.delegate = self
+        locationManager.allowsBackgroundLocationUpdates = true
         
         // Do any additional setup after loading the view.
     }
@@ -76,7 +77,7 @@ class DashboardViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //        self.accelerometerDeactivation()
+//                self.accelerometerDeactivation()
     }
     
     
