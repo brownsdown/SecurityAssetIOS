@@ -18,6 +18,7 @@ extension DashboardViewController: CLLocationManagerDelegate
             print("Timer")
             self.user?.userState = StateUser.unsafe
             self.updateUserStatusLabel()
+//            self.locationManager.
             self.locationManager.startUpdatingLocation()
         })
     }

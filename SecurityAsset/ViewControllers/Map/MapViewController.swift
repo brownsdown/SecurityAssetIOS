@@ -65,6 +65,7 @@ class MapViewController: UIViewController
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // MARK: - Request authorisation from the user for the foreground
         //       locationManager.requestWhenInUseAuthorization()
         // MARK: - Request authorisation from the user for the background

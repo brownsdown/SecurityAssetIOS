@@ -55,30 +55,29 @@ class DashboardViewController: UIViewController {
         self.locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
         
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         self.updateUserStatusLabel()
         if dashboardSwitch.isOn
         {
             self.accelerometerActivation()
         }
         locationManager.startUpdatingLocation()
+        
+        // Do any additional setup after loading the view.
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-//                self.accelerometerDeactivation()
-    }
+
     
     
     

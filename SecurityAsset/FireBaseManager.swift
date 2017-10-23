@@ -15,7 +15,7 @@ import SwiftyJSON
 class FireBaseManager: NSObject
 {
     static let databaseRef = Database.database().reference()
-    //    static var currentUserID: String = ""
+  
     var currentUser: User? = nil
     
     //MARK:- "Signleton"
@@ -37,7 +37,7 @@ class FireBaseManager: NSObject
             }
         }
     }
-    
+    // La fonction ci-dessous créé le user Firebase et envoi le mail de vérification pour approuver le compte
     func createUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -58,6 +58,7 @@ class FireBaseManager: NSObject
         }
     }
     
+    // Cette fonction est le constructeur du AppUser ds le CreationForm
     func createAppUser(emailTextField: UITextField, firstNameTextField: UITextField, lastNameTextField: UITextField, groupToJoinOrCreateTextField: UITextField, dateLabel: UILabel, streetTextField: UITextField, streetNumberTextField: UITextField, stateZipTextField: UITextField, mailBoxTextField: UITextField, cityTextField: UITextField, countryTextField: UITextField) -> AppUser?
     {
         var userApp: AppUser?
@@ -90,6 +91,7 @@ class FireBaseManager: NSObject
         return userApp
     }
     
+    // Cette fonction est appellé pour stoquer les informations du user, tant dans la tables group que la table Users.
     static func storeUserInDB(appUser: AppUser)
     {
         let usersRefTable = databaseRef.child("Users")
@@ -130,6 +132,7 @@ class FireBaseManager: NSObject
         usersRefTable.child((appUser.userFireBase?.uid)!).child("Location").child("Longitude").setValue(appUser.location.longitude)
     }
     
+    // Pas utilisée
     static func storePhonePositionInDB(usersRefTable: DatabaseReference, appUser: AppUser )
     {
         usersRefTable.child((appUser.userFireBase?.uid)!).child("PhonePosition").child("PhonePositionX").setValue(appUser.phonePosition.xPosition)

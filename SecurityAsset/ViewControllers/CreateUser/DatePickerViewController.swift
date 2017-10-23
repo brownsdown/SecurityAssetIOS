@@ -20,7 +20,7 @@ class DatePickerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    { super.prepare(for: segue, sender: sender)
         if let createUserVC = segue.destination as? CreateUserFormTableViewController
         {
             dateFormatter.dateFormat = "dd/MM/yyyy"

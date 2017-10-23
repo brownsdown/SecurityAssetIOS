@@ -70,7 +70,7 @@ class CreateUserFormTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+       super.prepare(for: segue, sender: sender)
         if let loginVC = segue.destination as? LogInViewController
         {
             loginVC.user = self.user
@@ -83,6 +83,7 @@ class CreateUserFormTableViewController: UITableViewController {
 
     // Cette ligne sert à ne pas hilighité la ligne de la tableview
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        
         return false
     }
     

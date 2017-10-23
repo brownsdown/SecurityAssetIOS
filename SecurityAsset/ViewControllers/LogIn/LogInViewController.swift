@@ -56,6 +56,7 @@ class LogInViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
         if let myTabBarVC = segue.destination as? MyUITabBarController
         {
             myTabBarVC.user = self.user

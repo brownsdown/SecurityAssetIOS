@@ -32,7 +32,6 @@
 		C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */; };
 		C887508E1F899287007FFDAF /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887508D1F899287007FFDAF /* DatePickerViewController.swift */; };
 		C88F34CF1F98CD2B00514D8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88F34CE1F98CD2B00514D8A /* CoreLocation.framework */; };
-		C88F34D11F993CC200514D8A /* LocationManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F34D01F993CC200514D8A /* LocationManagerExtension.swift */; };
 		C88F34D31F99475600514D8A /* MapViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88F34D21F99475600514D8A /* MapViewControllerExtension.swift */; };
 		C8B400CC1F8528BD00F9DF92 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */; };
 		C8B400D21F8528CC00F9DF92 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B400CD1F8528CB00F9DF92 /* AppUser.swift */; };
@@ -71,7 +70,6 @@
 		C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserFormTableViewController.swift; sourceTree = "<group>"; };
 		C887508D1F899287007FFDAF /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		C88F34CE1F98CD2B00514D8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C88F34D01F993CC200514D8A /* LocationManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerExtension.swift; sourceTree = "<group>"; };
 		C88F34D21F99475600514D8A /* MapViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerExtension.swift; sourceTree = "<group>"; };
 		C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C8B400CD1F8528CB00F9DF92 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
@@ -137,6 +135,25 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		C84B96271F9E0492004261C8 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
+				C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		C84B96281F9E04AF004261C8 /* CreateUser */ = {
+			isa = PBXGroup;
+			children = (
+				C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */,
+				C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */,
+				C887508D1F899287007FFDAF /* DatePickerViewController.swift */,
+			);
+			path = CreateUser;
+			sourceTree = "<group>";
+		};
 		C86085301F8284E300A2460C = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +177,6 @@
 			children = (
 				C83257F31F9BDF38002F9A62 /* SecurityAsset.entitlements */,
 				C860853C1F8284E400A2460C /* AppDelegate.swift */,
-				C88F34D01F993CC200514D8A /* LocationManagerExtension.swift */,
 				C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */,
 				C8B400DA1F852ED200F9DF92 /* ViewControllers */,
 				C8B400D71F8528D300F9DF92 /* Models */,
@@ -199,12 +215,9 @@
 		C8B400DA1F852ED200F9DF92 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C8B400CB1F8528BD00F9DF92 /* LogInViewController.swift */,
-				C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */,
+				C84B96271F9E0492004261C8 /* LogIn */,
 				C83527CF1F87696400D82F0C /* ForgotPasswordViewController.swift */,
-				C887508B1F89558B007FFDAF /* CreateUserFormTableViewController.swift */,
-				C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */,
-				C887508D1F899287007FFDAF /* DatePickerViewController.swift */,
+				C84B96281F9E04AF004261C8 /* CreateUser */,
 				C835B54D1F9674070049E772 /* UserInformation */,
 				C8D367741F90BDC30056A445 /* MyUITabBarController.swift */,
 				C83E5CCB1F9772FF009812F9 /* Dashboard */,
@@ -397,7 +410,6 @@
 				C8B400D41F8528CC00F9DF92 /* PhonePosition.swift in Sources */,
 				C83E5CCD1F97733C009812F9 /* DashboardViewControllerExtension.swift in Sources */,
 				C887508C1F89558B007FFDAF /* CreateUserFormTableViewController.swift in Sources */,
-				C88F34D11F993CC200514D8A /* LocationManagerExtension.swift in Sources */,
 				C834C2F01F927FF9004FD810 /* CreateUserFormExtension.swift in Sources */,
 				C861094D1F8F9D3B009107C3 /* UserInformationTableViewCell.swift in Sources */,
 				C8B400D61F8528CC00F9DF92 /* Adresse.swift in Sources */,
@@ -541,10 +553,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4MM84N22Q;
+				DEVELOPMENT_TEAM = HH564C9V35;
 				INFOPLIST_FILE = SecurityAsset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bt.SecurityAsset;
+				PRODUCT_BUNDLE_IDENTIFIER = be.com.bt.SecurityAsset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -557,10 +569,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4MM84N22Q;
+				DEVELOPMENT_TEAM = HH564C9V35;
 				INFOPLIST_FILE = SecurityAsset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bt.SecurityAsset;
+				PRODUCT_BUNDLE_IDENTIFIER = be.com.bt.SecurityAsset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
