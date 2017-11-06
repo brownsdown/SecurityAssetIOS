@@ -26,10 +26,7 @@ class MapViewController: UIViewController
     var annotationForAuxiliaryView: MKAnnotationView?
     
     
-    @IBAction func logInButton(_ sender: Any) {
-        self.dismiss(animated: true) {}
-        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
-    }
+
     @IBOutlet weak var auxiliaryView: UIView!
     
     
@@ -42,6 +39,11 @@ class MapViewController: UIViewController
         self.auxiliaryView.isHidden = true
         
         //        self.map.removeAnnotations(annotations)
+    }
+    
+    @IBAction func logInButton(_ sender: Any) {
+        self.dismiss(animated: true) {}
+        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
     }
     
     @IBAction func goToMaps(_ sender: Any) {

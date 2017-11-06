@@ -43,7 +43,6 @@ class AppUser
             let usersRefTable = FireBaseManager.databaseRef.child("Users")
                         let ref = usersRefTable.child((FireBaseManager.shared.currentUser?.uid)!)
                         FireBaseManager.updateUserLocationInDB(usersRefTable: ref, appUser: self)
-
         }
     }
     var phonePosition: PhonePosition = PhonePosition()

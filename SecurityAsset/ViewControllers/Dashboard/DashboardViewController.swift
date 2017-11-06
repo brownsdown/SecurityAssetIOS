@@ -10,11 +10,13 @@ import UIKit
 import CoreMotion
 import CoreLocation
 
+
 class DashboardViewController: UIViewController {
     var user: AppUser?
     var motionManager = CMMotionManager()
     var timer: Timer?
     let locationManager = CLLocationManager()
+    var deviceMotion = CMDeviceMotion()//
     @IBOutlet weak var userStatusLabel: UILabel!
     @IBOutlet weak var xPositionLabel: UILabel!
     @IBOutlet weak var yPositionLabel: UILabel!
@@ -25,12 +27,12 @@ class DashboardViewController: UIViewController {
     @IBAction func enablbeDisableAccelerometer(_ sender: UISwitch) {
         if sender.isOn
         {
-            self.accelerometerActivation()
+            self.gravitySensorActivation()
         }
         else
         {
             self.timer?.invalidate()
-            self.accelerometerDeactivation()
+            self.gravitySensorDeactivation()
             self.updateUserStatusLabel()
             self.xPositionLabel.text = "Sensor deactivated"
             self.yPositionLabel.text = "Sensor deactivated"
@@ -39,7 +41,7 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func returnToLogin(_ sender: Any) {
-        self.accelerometerDeactivation()
+        self.gravitySensorDeactivation()
         self.timer?.invalidate()
         self.dismiss(animated: true) {}
         self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
@@ -54,11 +56,12 @@ class DashboardViewController: UIViewController {
         self.user?.resetUserPhonePosition()
         self.locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
+
         
         self.updateUserStatusLabel()
         if dashboardSwitch.isOn
         {
-            self.accelerometerActivation()
+            self.gravitySensorActivation()
         }
         locationManager.startUpdatingLocation()
         

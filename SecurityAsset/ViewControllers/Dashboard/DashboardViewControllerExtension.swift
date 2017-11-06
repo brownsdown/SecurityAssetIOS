@@ -23,18 +23,18 @@ extension DashboardViewController: CLLocationManagerDelegate
         })
     }
     
-    func accelerometerActivation()
+    func gravitySensorActivation()
     {
         //MARK:- Set Motion Manager Properties
-        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.deviceMotionUpdateInterval = 0.2
         
         //MARK:- Start recording data
-        motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (data, error) in
             if let myData = data
             {
-                let xPosition = round(myData.acceleration.x * 10_000)/1000
-                let yPosition = round(myData.acceleration.y * 10_000)/1000
-                let zPosition = round(myData.acceleration.z * 10_000)/1000
+                let xPosition = round(myData.gravity.x * 10_000)/1000
+                let yPosition = round(myData.gravity.y * 10_000)/1000
+                let zPosition = round(myData.gravity.z * 10_000)/1000
                 
                 if abs(yPosition) < 3.0
                 {
@@ -81,9 +81,9 @@ extension DashboardViewController: CLLocationManagerDelegate
         
     }
     
-    func accelerometerDeactivation()
+    func gravitySensorDeactivation()
     {
-        motionManager.stopAccelerometerUpdates()
+        motionManager.stopDeviceMotionUpdates()
         self.user?.userState = StateUser.safe
     }
     
@@ -100,11 +100,11 @@ extension DashboardViewController: CLLocationManagerDelegate
         if UIApplication.shared.applicationState == .background {
             if dashboardSwitch.isOn
             {
-                self.accelerometerActivation()
+                self.gravitySensorActivation()
             }
             else
             {
-                self.accelerometerDeactivation()
+                self.gravitySensorDeactivation()
             }
             
             
