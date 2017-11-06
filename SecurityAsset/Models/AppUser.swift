@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftyJSON
 
+
+
 class AppUser
 {
     
@@ -89,6 +91,7 @@ class AppUser
         self.bithDate = birthDate
         self.location = location
         self.phonePosition = phonePosition
+        
     }
     
     init(group: Group,firstName: String, lastName: String, email: String,adress: Adress, birthDate: String, location: Location, phonePosition: PhonePosition, fireBaseUser: User?)
@@ -138,6 +141,7 @@ class AppUser
             }
         })
     }
+    
     //Fonction utilisée pour récupérer les données importantes des autres utilisateurs
     func updateUserFromDBwithUID(uid: String, handler: @escaping (Bool) -> Void)
     {

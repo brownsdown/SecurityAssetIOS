@@ -93,42 +93,45 @@ class LogInViewController: UIViewController {
         {
             self.showAlerteVC(title: "Login", message: "The Password is empty", alertAction1: self.alertActionOk!, alertAction2: nil)
         }
-        FireBaseManager.shared.login(email: email, password: password) { (success: Bool) in
-            if (success)
-            {
-                self.loginActivityIndicator.startAnimating()
-                self.logInButton.isEnabled = false
-                self.user = AppUser(fireBaseUser: FireBaseManager.shared.currentUser!)
-                self.user?.updateUserFromFirebase(fireBaseUser: FireBaseManager.shared.currentUser!, handler: { response in
-                    if (self.user?.userFireBase?.isEmailVerified)!
-                    {
-                        self.loginActivityIndicator.stopAnimating()
-                        self.logInButton.isEnabled = response
-                        self.moveForward()
-                    }
-                    
-                })
-                self.defaults.set(self.user?.email, forKey: "email")
-                self.defaults.set(password, forKey: "password")
-                self.mailTextField.isUserInteractionEnabled = false
-                self.mailTextField.backgroundColor = UIColor.darkGray
-                self.passwordTextField.isUserInteractionEnabled = false
-                self.passwordTextField.backgroundColor = UIColor.darkGray
-                
-                self.logInButton.setTitle("Continue", for: UIControlState.normal)
-                self.createAccountButton.setTitle("Sign out", for: UIControlState.normal)
-                if !(self.user?.userFireBase?.isEmailVerified)! 
+        else
+        {
+            FireBaseManager.shared.login(email: email, password: password) { (success: Bool) in
+                if (success)
                 {
-                    self.showAlerteVCMailNotVerified()
+                    self.loginActivityIndicator.startAnimating()
                     self.logInButton.isEnabled = false
-                    self.logInButton.backgroundColor = UIColor.darkGray
+                    self.user = AppUser(fireBaseUser: FireBaseManager.shared.currentUser!)
+                    self.user?.updateUserFromFirebase(fireBaseUser: FireBaseManager.shared.currentUser!, handler: { response in
+                        if (self.user?.userFireBase?.isEmailVerified)!
+                        {
+                            self.loginActivityIndicator.stopAnimating()
+                            self.logInButton.isEnabled = response
+                            self.moveForward()
+                        }
+                        
+                    })
+                    self.defaults.set(self.user?.email, forKey: "email")
+                    //self.defaults.set(password, forKey: "password")
+                    self.mailTextField.isUserInteractionEnabled = false
+                    self.mailTextField.backgroundColor = UIColor.darkGray
+                    self.passwordTextField.isUserInteractionEnabled = false
+                    self.passwordTextField.backgroundColor = UIColor.darkGray
+                    
+                    self.logInButton.setTitle("Continue", for: UIControlState.normal)
+                    self.createAccountButton.setTitle("Sign out", for: UIControlState.normal)
+                    if !(self.user?.userFireBase?.isEmailVerified)!
+                    {
+                        self.showAlerteVCMailNotVerified()
+                        self.logInButton.isEnabled = false
+                        self.logInButton.backgroundColor = UIColor.darkGray
+                    }
+                    self.forgotPasswordButton.isEnabled = false
+                    self.forgotPasswordButton.isHidden = true
+                    
+                    print("login successed")
                 }
-                self.forgotPasswordButton.isEnabled = false
-                self.forgotPasswordButton.isHidden = true
-                
-                print("login successed")
             }
-       
+            
         }
     }
     
@@ -140,8 +143,7 @@ class LogInViewController: UIViewController {
     func signOut()
     {
         try! Auth.auth().signOut()
-        let currentUSer = Auth.auth().currentUser
-        self.user = AppUser(fireBaseUser: currentUSer )
+
         passwordTextField.text = ""
         
         self.mailTextField.isUserInteractionEnabled = true
@@ -168,10 +170,7 @@ class LogInViewController: UIViewController {
         }
     }
     
-    func enableContinueButton()
-    {
-        self.logInButton.isEnabled = true
-    }
+
     
 }
 

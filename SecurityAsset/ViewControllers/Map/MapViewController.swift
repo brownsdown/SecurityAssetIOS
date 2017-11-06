@@ -12,6 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 import FirebaseAuth
 import SwiftyJSON
+//import GameController permet de récupérer le vecteur de gravité
 
 
 class MapViewController: UIViewController
@@ -20,7 +21,7 @@ class MapViewController: UIViewController
     let locationManager = CLLocationManager()
     @IBOutlet weak var map: MKMapView!
     var userFriends =  [AppUser] ()
-    var tempUser: AppUser?
+    var tempUser: AppUser? //TODO verifier si cette variable a toujours lieu d'être
     var dbRef = FireBaseManager.databaseRef
     var annotationForAuxiliaryView: MKAnnotationView?
     
@@ -134,6 +135,7 @@ class MapViewController: UIViewController
         
     }
     
+    // cette méthode permet de récupérer toutes les personnes du groupes dans le tableau user friend et afficher ces points à la carte
     func keepGroupTracking()
     {
         for group in (user?.group.group)!

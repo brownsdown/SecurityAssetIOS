@@ -18,6 +18,10 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBAction func loginButton(_ sender: Any) {
+        self.dismiss(animated: true) {}
+        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+    }
     @IBAction func resetPassword(_ sender: UIButton) {
         if let email = emailTextField.text{
             Auth.auth().sendPasswordReset(withEmail: email) { (error) in

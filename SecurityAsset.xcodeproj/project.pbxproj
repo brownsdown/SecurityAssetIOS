@@ -46,7 +46,6 @@
 		741AF847EF7676D16C4059E9 /* Pods_SecurityAsset.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecurityAsset.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82F0F611F8B625C006CD74F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C8306A4E1F867C2B0060129E /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		C83257F31F9BDF38002F9A62 /* SecurityAsset.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecurityAsset.entitlements; sourceTree = "<group>"; };
 		C833ACC51F8F8D9E00B19D24 /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
 		C834C2EF1F927FF9004FD810 /* CreateUserFormExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserFormExtension.swift; sourceTree = "<group>"; };
 		C834C2F31F928D1E004FD810 /* LogInViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -175,7 +174,6 @@
 		C860853B1F8284E300A2460C /* SecurityAsset */ = {
 			isa = PBXGroup;
 			children = (
-				C83257F31F9BDF38002F9A62 /* SecurityAsset.entitlements */,
 				C860853C1F8284E400A2460C /* AppDelegate.swift */,
 				C85D7E381F83C0AE001AA88A /* FireBaseManager.swift */,
 				C8B400DA1F852ED200F9DF92 /* ViewControllers */,

@@ -65,23 +65,25 @@ class CreateUserFormTableViewController: UITableViewController {
         self.initAlertActions()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     @IBAction func myUnwindCreateUserForm (unwindSegue: UIStoryboardSegue){
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       super.prepare(for: segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         if let loginVC = segue.destination as? LogInViewController
         {
             loginVC.user = self.user
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // Cette ligne sert à ne pas hilighité la ligne de la tableview
+  
+    
+    // Cette ligne sert à ne pas highlighité la ligne de la tableview
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         
         return false
@@ -107,13 +109,12 @@ class CreateUserFormTableViewController: UITableViewController {
                     
                     self.showAlerteVC(title: "User creation", message: "A verifying email has been sent to \(email). Please go to your mail to verify your adress before sign in)", alertAction1: self.alertActionOkSpecial!, alertAction2: nil)
                 }
-                    
                 else
                 {
                     guard let errorToDisplay = LogInViewController.fireBaseAuthError else{return}
                     
                     self.showAlerteVC(title: "User creation", message: "\(errorToDisplay.localizedDescription)", alertAction1: self.alertActionOk!, alertAction2: nil)
-
+                    
                 }
                 self.activityIndicator.stopAnimating()
             }

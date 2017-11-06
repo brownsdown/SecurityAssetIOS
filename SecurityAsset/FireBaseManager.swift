@@ -15,7 +15,7 @@ import SwiftyJSON
 class FireBaseManager: NSObject
 {
     static let databaseRef = Database.database().reference()
-  
+    
     var currentUser: User? = nil
     
     //MARK:- "Signleton"
@@ -31,12 +31,15 @@ class FireBaseManager: NSObject
                 
             else
             {
-                self.currentUser = user
-                //                currentUserID = (user?.uid)!
-                completion(true)
+                DispatchQueue.main.async {
+                    self.currentUser = user
+                    completion(true)
+                }
+                
             }
         }
     }
+    
     // La fonction ci-dessous créé le user Firebase et envoi le mail de vérification pour approuver le compte
     func createUser(email: String, password: String, completion: @escaping((_ succes: Bool) -> Void))
     {
@@ -53,7 +56,9 @@ class FireBaseManager: NSObject
                 self.currentUser = user
                 self.currentUser?.sendEmailVerification(completion: nil)
                 //                currentUserID = (user?.uid)!
-                completion(true)
+                DispatchQueue.main.async {
+                    completion(true)
+                }
             }
         }
     }
@@ -98,12 +103,12 @@ class FireBaseManager: NSObject
         let groupRefTable = databaseRef.child("Group")
         let userGroupRefTable = usersRefTable.child((appUser.userFireBase?.uid)!).child("Group")
         
-        storeGroupInDB(groupRefTable: groupRefTable, appUser: appUser)
         storeGeneralInformationUser(usersRefTable: usersRefTable, appUser: appUser)
         storeLocationInDB(usersRefTable: usersRefTable, appUser: appUser )
         storePhonePositionInDB(usersRefTable: usersRefTable, appUser: appUser)
         storeAdressInDB(usersRefTable: usersRefTable, appUser: appUser)
         storeUserGroups(userGroupRef: userGroupRefTable, appUser: appUser)
+        storeGroupInDB(groupRefTable: groupRefTable, appUser: appUser)
         
     }
     
@@ -174,10 +179,13 @@ class FireBaseManager: NSObject
     {
         let count = userGroup.count
         var groupToReturn: Group = Group()
-        for i in 1...count
+        if count != 0
         {
-            groupToReturn.group.append(userGroup["group"+String(i)].string!)
-            print(userGroup["group"+String(i)].string!)
+            for i in 1...count
+            {
+                groupToReturn.group.append(userGroup["group"+String(i)].string!)
+                print(userGroup["group"+String(i)].string!)
+            }
         }
         return groupToReturn
     }
@@ -245,6 +253,8 @@ class FireBaseManager: NSObject
         }
         
     }
+    
+    // La méthode ci-dessous met à jours la localisation du user dans la DB
     static func updateUserLocationInDB (usersRefTable: DatabaseReference, appUser: AppUser)
     {
         let ref = usersRefTable.child("Location")

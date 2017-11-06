@@ -10,17 +10,22 @@ import UIKit
 
 class DatePickerViewController: UIViewController {
 
+    
+    @IBOutlet weak var validateButton: UIButton!
+    
     var selectedDate: String = ""
     var dateFormatter: DateFormatter = DateFormatter()
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.validateButton.layer.cornerRadius = 15
 
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    { super.prepare(for: segue, sender: sender)
+    {
+        super.prepare(for: segue, sender: sender)
         if let createUserVC = segue.destination as? CreateUserFormTableViewController
         {
             dateFormatter.dateFormat = "dd/MM/yyyy"
