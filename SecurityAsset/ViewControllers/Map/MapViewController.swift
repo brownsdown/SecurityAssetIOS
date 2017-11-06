@@ -37,7 +37,7 @@ class MapViewController: UIViewController
     @IBOutlet weak var goButton: UIButton!
     @IBAction func closeAuxiliaryView(_ sender: Any) {
         self.auxiliaryView.isHidden = true
-        
+        //test
         //        self.map.removeAnnotations(annotations)
     }
     
