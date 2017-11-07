@@ -156,6 +156,7 @@ class MapViewController: UIViewController
         }
     }
     
+    
     func updateUserOnMap()
     {
         let annotations = self.map.annotations
