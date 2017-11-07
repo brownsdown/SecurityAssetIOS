@@ -15,7 +15,6 @@ extension DashboardViewController: CLLocationManagerDelegate
     {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
-            print("Timer")
             self.user?.userState = StateUser.unsafe
             self.updateUserStatusLabel()
 //            self.locationManager.

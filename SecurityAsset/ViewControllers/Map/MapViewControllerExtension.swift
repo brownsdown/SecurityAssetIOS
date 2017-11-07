@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 import MapKit
-extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
+extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate
 {
     //MARK:- CLLocationManagerDelegate
     // Cette fonction est appellé à la première position de l'utilisateur afin de centrer la carte sur lui, ensuite on arrêtte le update qui se fera via le dashboard qui n'est pas écrasé, car dans un tabbar
@@ -68,6 +68,27 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate
         mapItem.name = myAnnotation.annotation?.title!
         
         return mapItem
-        
     }
+    
+    //Mark : - TableView DataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // La méthode ci-dessous est utilisée par la méthode suivante
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.userFriends.count
+    }
+    //La méthode ci-dessous est utiliser pour implémenter, et mettre à jours, la table view avec le tableau de data
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = userFriends[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mapUser", for: indexPath) as! MapUserTableViewCell
+        cell.user = user
+        return cell
+    }
+    //Mark : - TableView Delegate
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let cell = self.userFriendsTableView.cellForRow(at: indexPath) as! MapUserTableViewCell
+            zoomTo(user: cell.user!)
+        }
 }

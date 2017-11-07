@@ -8,8 +8,26 @@
 
 import UIKit
 
-class MapUserTableViewCell: UITableViewCell {
+class MapUserTableViewCell: UITableViewCell{
 
+    var user: AppUser? = nil
+    {
+        didSet
+        {
+            self.userNameLabel.text = user?.firstName
+            if user?.userState.rawValue == "Unsafe"
+            {
+                self.backgroundColor = UIColor.red
+            }
+            else
+            {
+                self.backgroundColor = nil
+            }
+        }
+    }
+
+    
+    @IBOutlet weak var userNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +39,8 @@ class MapUserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+protocol MapUserDelegate: class{
+    func centerOnUser(user: AppUser)
 }

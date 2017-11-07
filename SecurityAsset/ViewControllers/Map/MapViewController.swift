@@ -17,6 +17,8 @@ import SwiftyJSON
 
 class MapViewController: UIViewController
 {
+
+    
     var user: AppUser?
     let locationManager = CLLocationManager()
     var userFriends =  [AppUser] ()
@@ -26,6 +28,7 @@ class MapViewController: UIViewController
     var annotationForAuxiliaryView: MKAnnotationView?
     
     
+    @IBOutlet weak var userFriendsTableView: UITableView!
     @IBOutlet weak var map: MKMapView!
     
     @IBOutlet weak var auxiliaryView: UIView!
@@ -61,10 +64,13 @@ class MapViewController: UIViewController
         
         map.showsScale = true
         map.showsTraffic = true
-        
+        self.userFriendsTableView.dataSource = self
+        self.userFriendsTableView.delegate = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -106,17 +112,17 @@ class MapViewController: UIViewController
                 let json = JSON(value)
                 for (key,_) in json
                 {
-                    
                     let userTemp: AppUser = AppUser(fireBaseUser: key)!
                     // On attent que firebase retourne les valeurs et ensuite on rempli la table userFriends et on dispose les points sur la carte
                     userTemp.updateUserFromDBwithUID(uid: key, handler: { value in
                         self.userFriends.append(userTemp)
                         self.userAnnotation(user: userTemp)
+                        DispatchQueue.main.async {
+                        self.userFriendsTableView.reloadData()
+                        }
                     })
-                    
                 }
             }
-
             self.keepGroupTracking()
         })
         
@@ -140,22 +146,20 @@ class MapViewController: UIViewController
                             if newTempUser?.email == user.email
                             {
                                 self.userFriends[i] = newTempUser!
-                                if newTempUser?.email == self.user?.email
-                                {
-                                    self.zoomTo(user: newTempUser!)
-                                }
                             }
                             i += 1
                         }
                         i = 0
+                        DispatchQueue.main.async {
+                            self.userFriendsTableView.reloadData()
+                            self.updateUserOnMap()
+                        }
                         
-                        self.updateUserOnMap()
                     })
                 }
             })
         }
     }
-    
     
     func updateUserOnMap()
     {
@@ -166,13 +170,15 @@ class MapViewController: UIViewController
             self.userAnnotation(user: user)
         }
     }
-    
+    // Cette méthode recentre la carte sur le user mis en argument
     func zoomTo(user: AppUser)
     {
+        DispatchQueue.main.async {
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.001, 0.001)
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake((user.location.latitude), (user.location.longitude))
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         self.map.setRegion(region, animated: true)
+        }
     }
 }
 class MyPointAnnotation : MKPointAnnotation
