@@ -19,26 +19,24 @@ class MapViewController: UIViewController
 {
     var user: AppUser?
     let locationManager = CLLocationManager()
-    @IBOutlet weak var map: MKMapView!
     var userFriends =  [AppUser] ()
-    var tempUser: AppUser? //TODO verifier si cette variable a toujours lieu d'être
     var dbRef = FireBaseManager.databaseRef
+    
+    //la variable sert à récupérer l'annotation du point qu'on selectionne sur la map afin de préparer son envoi vers Maps
     var annotationForAuxiliaryView: MKAnnotationView?
     
     
-
+    @IBOutlet weak var map: MKMapView!
+    
     @IBOutlet weak var auxiliaryView: UIView!
-    
-    
     @IBOutlet weak var firstnameAuxiliaryVewLabel: UILabel!
     @IBOutlet weak var LastnameAuxiliaryViewLabel: UILabel!
     @IBOutlet weak var UserStatusAuxiliaryViewLabel: UILabel!
     
     @IBOutlet weak var goButton: UIButton!
+    
     @IBAction func closeAuxiliaryView(_ sender: Any) {
         self.auxiliaryView.isHidden = true
-        //test
-        //        self.map.removeAnnotations(annotations)
     }
     
     @IBAction func logInButton(_ sender: Any) {
@@ -50,18 +48,16 @@ class MapViewController: UIViewController
         self.mapItem(myAnnotation: self.annotationForAuxiliaryView!).openInMaps(launchOptions: nil)
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.annotationForAuxiliaryView = MKAnnotationView()
         locationManager.delegate = self
+        self.map.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         let tbcv = self.tabBarController as! MyUITabBarController
         self.user = tbcv.user
+        locationManager.startUpdatingLocation()
         self.searchUserInGroup()
-        
         
         map.showsScale = true
         map.showsTraffic = true
@@ -69,12 +65,6 @@ class MapViewController: UIViewController
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // MARK: - Request authorisation from the user for the foreground
-        //       locationManager.requestWhenInUseAuthorization()
-        // MARK: - Request authorisation from the user for the background
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,7 +72,7 @@ class MapViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // Cette méthode permet de crées les annotations et les ajouter à la map
     func userAnnotation(user: AppUser?)
     {
         let annotation = MyPointAnnotation()
@@ -103,8 +93,10 @@ class MapViewController: UIViewController
         map.addAnnotation(annotation)
     }
     
+    //On va chercher tous les users appartenant au groupe dans la table Group, afin de les placer dans userFriends et on les dispose sur la map
     func searchUserInGroup()
     {
+        // Ici on écoute le premier groupe de la liste, à améliorer
         let groupToTrack =  (self.user?.group.group[0])!
         
         let groupUserRef = self.dbRef.child("Group").child(groupToTrack)
@@ -116,8 +108,7 @@ class MapViewController: UIViewController
                 {
                     
                     let userTemp: AppUser = AppUser(fireBaseUser: key)!
-                    // On attent que firebase retourne les valeurs et ensuite on les implémente dans
-                    // l'anotation à être ajouter à la map
+                    // On attent que firebase retourne les valeurs et ensuite on rempli la table userFriends et on dispose les points sur la carte
                     userTemp.updateUserFromDBwithUID(uid: key, handler: { value in
                         self.userFriends.append(userTemp)
                         self.userAnnotation(user: userTemp)
@@ -125,14 +116,8 @@ class MapViewController: UIViewController
                     
                 }
             }
-            
-            let annotations = self.map.annotations
-            for annotation in annotations
-            {
-                self.map.selectAnnotation(annotation, animated: true)
-            }
-            self.map.delegate = self
-                        self.keepGroupTracking()//
+
+            self.keepGroupTracking()
         })
         
     }
@@ -155,20 +140,19 @@ class MapViewController: UIViewController
                             if newTempUser?.email == user.email
                             {
                                 self.userFriends[i] = newTempUser!
+                                if newTempUser?.email == self.user?.email
+                                {
+                                    self.zoomTo(user: newTempUser!)
+                                }
                             }
-                           i += 1
+                            i += 1
                         }
                         i = 0
                         
-                        print(newTempUser)
-                    self.updateUserOnMap()
-                    
+                        self.updateUserOnMap()
                     })
-                    
                 }
-                
             })
-            
         }
     }
     
@@ -180,6 +164,14 @@ class MapViewController: UIViewController
         {
             self.userAnnotation(user: user)
         }
+    }
+    
+    func zoomTo(user: AppUser)
+    {
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.001, 0.001)
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake((user.location.latitude), (user.location.longitude))
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        self.map.setRegion(region, animated: true)
     }
 }
 class MyPointAnnotation : MKPointAnnotation

@@ -55,7 +55,7 @@ class DashboardViewController: UIViewController {
         self.user = tbcv.user
         self.user?.resetUserPhonePosition()
         self.locationManager.delegate = self
-        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.allowsBackgroundLocationUpdates = true//
 
         
         self.updateUserStatusLabel()

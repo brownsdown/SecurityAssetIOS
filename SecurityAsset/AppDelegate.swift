@@ -8,10 +8,12 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let locationManager = CLLocationManager()//
     var window: UIWindow?
 
 
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+           // MARK: - Request authorisation from the user for the background
+        locationManager.requestAlwaysAuthorization()
         return true
     }
 

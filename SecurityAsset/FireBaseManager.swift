@@ -246,6 +246,8 @@ class FireBaseManager: NSObject
         let post = ["User State": appUser.userState.rawValue]
         ref.updateChildValues(post)
         
+        
+        // Après avoir mis à jour la table user on met à jour la table Group
         for group in appUser.group.group
         {
             let groupRefTable = databaseRef.child("Group").child(group).child((appUser.userFireBase?.uid)!)
@@ -261,6 +263,7 @@ class FireBaseManager: NSObject
         let post = ["Latitude": appUser.location.latitude, "Longitude": appUser.location.longitude]
         ref.updateChildValues(post)
         
+        //après avoir mis à jours la localisation du user dans la table Users, on met à jours la table Group
         for group in appUser.group.group
         {
             let groupRefTable = databaseRef.child("Group").child(group).child((appUser.userFireBase?.uid)!).child("Location")

@@ -106,6 +106,7 @@ class AppUser
         self.phonePosition = phonePosition
         self.userFireBase = fireBaseUser
     }
+    
     func resetUserPhonePosition()
     {
         self.location.latitude = 0.0
