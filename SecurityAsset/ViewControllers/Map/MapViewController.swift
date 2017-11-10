@@ -12,12 +12,12 @@ import CoreLocation
 import FirebaseDatabase
 import FirebaseAuth
 import SwiftyJSON
-//import GameController permet de récupérer le vecteur de gravité
+import UserNotifications
 
 
 class MapViewController: UIViewController
 {
-
+    
     
     var user: AppUser?
     let locationManager = CLLocationManager()
@@ -26,6 +26,9 @@ class MapViewController: UIViewController
     
     //la variable sert à récupérer l'annotation du point qu'on selectionne sur la map afin de préparer son envoi vers Maps
     var annotationForAuxiliaryView: MKAnnotationView?
+    
+    let content = UNMutableNotificationContent() //
+    
     
     
     @IBOutlet weak var userFriendsTableView: UITableView!
@@ -66,6 +69,11 @@ class MapViewController: UIViewController
         map.showsTraffic = true
         self.userFriendsTableView.dataSource = self
         self.userFriendsTableView.delegate = self
+        
+        self.content.title = "Warning"
+        self.content.subtitle = "Someone needs help!"
+        self.content.badge = 1
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +126,7 @@ class MapViewController: UIViewController
                         self.userFriends.append(userTemp)
                         self.userAnnotation(user: userTemp)
                         DispatchQueue.main.async {
-                        self.userFriendsTableView.reloadData()
+                            self.userFriendsTableView.reloadData()
                         }
                     })
                 }
@@ -146,6 +154,14 @@ class MapViewController: UIViewController
                             if newTempUser?.email == user.email
                             {
                                 self.userFriends[i] = newTempUser!
+                                if UIApplication.shared.applicationState == .background
+                                {
+                                    if (self.userFriends[i].userState.rawValue == "Unsafe" && self.userFriends[i].email != self.user?.email)
+                                    {
+                                        self.content.body = self.userFriends[i].firstName
+                                        UNUserNotificationCenter.current().add(UNNotificationRequest(identifier: "test", content: self.content, trigger: nil))
+                                    }
+                                }
                             }
                             i += 1
                         }
@@ -174,10 +190,10 @@ class MapViewController: UIViewController
     func zoomTo(user: AppUser)
     {
         DispatchQueue.main.async {
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.001, 0.001)
-        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake((user.location.latitude), (user.location.longitude))
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        self.map.setRegion(region, animated: true)
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.001, 0.001)
+            let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake((user.location.latitude), (user.location.longitude))
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+            self.map.setRegion(region, animated: true)
         }
     }
 }

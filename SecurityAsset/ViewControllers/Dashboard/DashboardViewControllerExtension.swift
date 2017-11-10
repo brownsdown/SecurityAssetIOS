@@ -93,7 +93,7 @@ extension DashboardViewController: CLLocationManagerDelegate
         self.user?.location.latitude = myLocation.latitude
         self.user?.location.longitude = myLocation.longitude
         var i = 0
-        print("background\(i)")
+        
         i += 1
         //        locationManager.stopUpdatingLocation()
         if UIApplication.shared.applicationState == .background {
@@ -105,8 +105,6 @@ extension DashboardViewController: CLLocationManagerDelegate
             {
                 self.gravitySensorDeactivation()
             }
-            
-            
         }
     }
 }

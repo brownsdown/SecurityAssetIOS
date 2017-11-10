@@ -21,7 +21,6 @@ extension MapViewController: CLLocationManagerDelegate, MKMapViewDelegate, UITab
         map.setRegion(region, animated: true)
         self.user?.location.latitude = myLocation.latitude
         self.user?.location.longitude = myLocation.longitude
-        print("latitude: \(myLocation.latitude) longitude: \(myLocation.longitude)")
         
         locationManager.stopUpdatingLocation()
         

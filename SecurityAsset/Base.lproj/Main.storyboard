@@ -1130,11 +1130,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="69Z-yA-1OJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Y-NR-6gW">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            </mapView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfN-5o-FwP">
-                                <rect key="frame" x="207" y="268" width="150" height="200"/>
+                                <rect key="frame" x="132" y="268" width="150" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8J-Wm-Ud9">
-                                        <rect key="frame" x="0.0" y="162" width="30" height="30"/>
+                                        <rect key="frame" x="8" y="162" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="fem-Vy-ICq"/>
                                         </constraints>
@@ -1144,13 +1147,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhi-fJ-oqP">
-                                        <rect key="frame" x="0.0" y="37" width="134" height="21"/>
+                                        <rect key="frame" x="8" y="37" width="134" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserStatus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDG-sR-YLQ">
-                                        <rect key="frame" x="0.0" y="89.666666666666686" width="120" height="21"/>
+                                        <rect key="frame" x="15" y="89.666666666666686" width="120" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="feN-WG-6Tc"/>
                                         </constraints>
@@ -1159,7 +1162,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37U-yw-1i1">
-                                        <rect key="frame" x="-48" y="162" width="48" height="30"/>
+                                        <rect key="frame" x="94" y="162" width="48" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="R6x-QL-VVJ"/>
                                         </constraints>
@@ -1169,7 +1172,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firstname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaO-aE-LoS">
-                                        <rect key="frame" x="0.0" y="8" width="134" height="21"/>
+                                        <rect key="frame" x="8" y="8" width="134" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1227,9 +1230,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Y-NR-6gW">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
